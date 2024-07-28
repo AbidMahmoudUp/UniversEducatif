@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="207.0" prefWidth="498.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Magasin.Produit.CardProduitController">
+   <children>
+      <ImageView fx:id="ImgModulePath" fitHeight="114.0" fitWidth="89.0" layoutX="14.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="90.4137954711914" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="46.0">
+         <image>
+            <Image url="@../../../../Images/LeftImageExam.png" />
+         </image>
+      </ImageView>
+
+      <ImageView fx:id="id_produit" fitHeight="20.0" fitWidth="20.0" layoutX="460.0" layoutY="146.0" onMouseClicked="#redirection" pickOnBounds="true" preserveRatio="true" userData="ID_DU_PRODUIT" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="146.0">
+         <image>
+            <Image url="@../../../../Images/EditOffre.png" />
+         </image>
+      </ImageView>
+
+      <Label fx:id="nomModule" layoutX="121.0" layoutY="21.0" prefHeight="35.0" prefWidth="239.0" text="Nom du produit" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="21.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+
+      <Label layoutX="121.0" layoutY="56.0" prefHeight="17.0" prefWidth="100.0" text="Type :" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="56.0" />
+      <Label fx:id="typeProduit" layoutX="229.0" layoutY="56.0" prefHeight="17.0" prefWidth="100.0" text="Type de produit" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="56.0" />
+
+      <Label layoutX="121.0" layoutY="81.0" prefHeight="17.0" prefWidth="100.0" text="Prix :" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="81.0" />
+      <Label fx:id="prixProduit" layoutX="229.0" layoutY="81.0" prefHeight="17.0" prefWidth="100.0" text="Prix du produit" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="81.0" />
+
+      <Label layoutX="121.0" layoutY="106.0" prefHeight="17.0" prefWidth="100.0" text="Marge :" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="106.0" />
+      <Label fx:id="margeProduit" layoutX="229.0" layoutY="106.0" prefHeight="17.0" prefWidth="100.0" text="Marge du produit" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="106.0" />
+
+      <Label fx:id="descriptionModule" layoutX="17.0" layoutY="146.0" prefHeight="35.0" prefWidth="20.0" text="Description du produit" wrapText="true" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="491.0" AnchorPane.topAnchor="146.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+
+      <ImageView fx:id="Bdelete" fitHeight="35.0" fitWidth="28.0" layoutX="456.0" layoutY="36.0" onMouseClicked="#deleteProduitt" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="454.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="42.0">
+         <image>
+            <Image url="@../../../../Images/delete.png" />
+         </image>
+         <viewport>
+            <Rectangle2D minY="39.0" />
+         </viewport>
+      </ImageView>
+   </children>
+</AnchorPane>

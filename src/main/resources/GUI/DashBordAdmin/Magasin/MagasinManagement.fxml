@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="useranchor" prefHeight="721.0" prefWidth="1107.0" style="-fx-background-color: #F5F7FB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Magasin.MagasinManagementController">
+   <children>
+      <Circle fx:id="addMagasin" fill="DODGERBLUE" layoutX="1050.0" layoutY="40.0" onMouseClicked="#ShowPopUpAddProduct" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="55.0" layoutY="30.0" text="Gestion Magasin">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="addIcon" fitHeight="20.0" fitWidth="20.0" layoutX="1040.0" layoutY="30.0" onMouseClicked="#ShowPopUpAddProduct" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/add.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="1.0" layoutY="68.0" prefHeight="46.0" prefWidth="1108.0" style="-fx-background-color: &quot;#F5F5F5&quot;; -fx-border-color: &quot;#EDEDED&quot;;">
+         <children>
+            <Label fx:id="produitsLabel" layoutX="50.0" layoutY="14.0" text="Produits">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="commandeLabel" layoutX="120.0" layoutY="14.0" onMouseClicked="#setOnlyUsers" onMouseEntered="#AnimateOnUsersLine" onMouseExited="#AnimateOffUsersLine" text="Commandes">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneDisplay" layoutX="43.0" layoutY="149.0" prefHeight="594.0" prefWidth="1009.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 10;" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="45.0">
+         <children>
+            <Label fx:id="TypeDisplayed" layoutX="24.0" layoutY="12.0" text="Gestion Produit" AnchorPane.topAnchor="24.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchBarMagasinManagement" layoutX="194.0" layoutY="8.0" onKeyReleased="#searchBarMagasinManagement" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: &quot;f5f5f5&quot;;" AnchorPane.topAnchor="24.0" />
+            <AnchorPane layoutX="758.0" layoutY="26.0" onMouseClicked="#OpenAndCloseTrieFiled" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: &quot;f5f5f5&quot;; -fx-background-radius: 4;">
+               <children>
+                  <Label fx:id="optionLabel" layoutX="5.0" layoutY="5.0" text="Nom">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="20.0" fitWidth="49.0" layoutX="166.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/arrow_drop_downUnused.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="693.0" layoutY="32.0" text="Triée Par:">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="178.0" layoutY="8.0" prefHeight="25.0" prefWidth="20.0" style="-fx-background-color: &quot;f5f5f5&quot;; -fx-background-radius: 2;" AnchorPane.topAnchor="24.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/search.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="ScrollPaneMagasinManagement" layoutY="57.0" maxHeight="537.0" maxWidth="1021.0" minHeight="529.0" minWidth="1021.0" prefHeight="529.0" prefWidth="1021.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 10;">
+               <content>
+                  <FlowPane fx:id="flowpaneMagasinManagement" prefHeight="507.0" prefWidth="1028.0" style="-fx-background-color: white;" />
+               </content>
+            </ScrollPane>
+            <AnchorPane fx:id="OrderAnchorPane" layoutX="757.0" layoutY="48.0" prefHeight="107.0" prefWidth="188.0" style="-fx-background-color: white; -fx-background-radius: 4;">
+               <children>
+                  <Label fx:id="nom" layoutY="4.0" onMouseClicked="#choisirNom" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #f5f5f5;" text="Nom">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" layoutY="32.0" onMouseClicked="#choisirEmail" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #f5f5f5;" text="Email">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="role" layoutY="61.0" onMouseClicked="#choisirRole" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #f5f5f5;" text="Role">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="descImg" fitHeight="20.0" fitWidth="16.0" layoutX="958.0" layoutY="37.0" onMouseClicked="#triDesc" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/arrow_drop_downUsed.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ascImg" fitHeight="20.0" fitWidth="16.0" layoutX="958.0" layoutY="23.0" onMouseClicked="#triAsc" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../../../Images/arrow_drop_downUsed.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="PopUpAddProduit" prefHeight="743.0" prefWidth="1107.0" visible="false" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="316.0" style="-fx-background-color: #FCFCFC; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Societe.CardController">
+   <children>
+      <Label fx:id="nom_label" layoutX="218.0" layoutY="15.0" prefHeight="26.0" prefWidth="100.0" text="Esprit" textFill="#2c4869">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="des_label" alignment="TOP_LEFT" layoutX="120.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="72.0" prefWidth="196.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy." wrapText="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <ImageView accessibleRole="BUTTON" fitHeight="20.0" fitWidth="20.0" layoutX="117.0" layoutY="111.0" onMouseClicked="#supprimerButton" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.0" AnchorPane.topAnchor="111.0">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="284.0" layoutY="14.0" onMouseClicked="#updateButton" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../../../Images/EditOffre.png" />
+         </image>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="16.0" fitWidth="16.0" layoutX="279.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
+         <image>
+            <Image url="@../../../Images/SeeMore.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="93.0" layoutX="2.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../../Images/Societeoffre.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="126.0" layoutY="29.0" prefHeight="17.0" prefWidth="106.0" text="Nom de Societe : " AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="19.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="234.0" layoutY="114.0" text="Voir Offres" textFill="#2c4869">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

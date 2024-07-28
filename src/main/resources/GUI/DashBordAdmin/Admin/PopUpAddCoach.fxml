@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="PopUpAddCoach" prefHeight="721.0" prefWidth="1107.0" style="-fx-opacity: 55%; -fx-background-color: &quot;#d9d9d9#&quot;;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Admin.PopUpAddCoachController">
+   <children>
+      <ImageView fx:id="backgroundBlur" fitHeight="721.0" fitWidth="1107.0" layoutY="3.0" onMouseClicked="#ClosepopUp" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/blurBackground.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="324.0" layoutY="111.0" prefHeight="504.0" prefWidth="406.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8; -fx-opacity: 100%;">
+         <children>
+            <Label layoutX="16.0" layoutY="34.0" text="Nom" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="34.0">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font></Label>
+            <Label layoutX="136.0" layoutY="9.0" prefHeight="37.0" prefWidth="135.0" text="Ajouter Un Coach" textAlignment="CENTER" textFill="#419db7" AnchorPane.bottomAnchor="455.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="136.0" AnchorPane.topAnchor="9.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="91.0" text="Prénom" AnchorPane.leftAnchor="15.0" />
+            <Label layoutX="15.0" layoutY="265.0" text="Numero Telephone" AnchorPane.leftAnchor="15.0" />
+            <Label layoutX="15.0" layoutY="324.0" text="Addresse" AnchorPane.leftAnchor="15.0" />
+            <TextField fx:id="LastNameTextFiled" layoutX="15.0" layoutY="50.0" onAction="#focusOnLastNameFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" AnchorPane.leftAnchor="15.0" />
+            <TextField fx:id="FirstNameTextFiled" layoutX="15.0" layoutY="108.0" onAction="#focusOnFirstNameFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" AnchorPane.leftAnchor="15.0" />
+            <TextField fx:id="PhoneTextFiled" layoutX="15.0" layoutY="282.0" onAction="#focusOnPhoneNumberFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" AnchorPane.leftAnchor="15.0" />
+            <TextField fx:id="AddressTextFiled" layoutX="15.0" layoutY="340.0" onAction="#focusOnAddressFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" AnchorPane.leftAnchor="15.0" />
+            <Button fx:id="addCoach" layoutX="15.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#addCoach" style="-fx-background-color: &quot;#007DFE&quot;;" text="Ajouter" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="470.0" />
+            <Button fx:id="cancelButton" layoutX="333.0" layoutY="470.0" mnemonicParsing="false" style="-fx-background-color: &quot;#D9D9D9&quot;;" text="Annuler" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="470.0" />
+            <ImageView fx:id="closeButton" fitHeight="43.0" fitWidth="24.0" layoutX="363.0" layoutY="9.0" onMouseClicked="#ClosepopUp" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="7.0">
+               <image>
+                  <Image url="@../../../Images/close.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="15.0" layoutY="381.0" text="Localisation" AnchorPane.leftAnchor="15.0" />
+            <TextField fx:id="LocationTextFiled" layoutX="15.0" layoutY="398.0" onAction="#focusOnLocationFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" AnchorPane.leftAnchor="15.0" />
+            <PasswordField fx:id="PasswordTextFiled" layoutX="14.0" layoutY="224.0" onAction="#focusOnPasswordFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <TextField fx:id="EmailTextFiled" layoutX="14.0" layoutY="166.0" onAction="#focusOnEmailFiled" prefHeight="25.0" prefWidth="377.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <Label layoutX="17.0" layoutY="150.0" text="Email" AnchorPane.leftAnchor="15.0" />
+            <Label layoutX="15.0" layoutY="206.0" text="Mot de Passe" />
+            <Label fx:id="LastNameErrorLabel" layoutX="36.0" layoutY="76.0" text="Il faut Commencer par Une Letter Majusclue" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="firstNameErrorLabel" layoutX="37.0" layoutY="135.0" text="Il faut Commencer par Une Letter Majusclue" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailErrorLabel" layoutX="30.0" layoutY="193.0" text="Email invalide" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordErrorLabel" layoutX="22.0" layoutY="251.0" text="Mot de passe invalide" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneNumberErrorLabel" layoutX="21.0" layoutY="307.0" text="Le numéro de téléphone doit être composé de 8 chiffres." textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="LocationErrorLabel" layoutX="32.0" layoutY="423.0" minHeight="13.0" minWidth="77.0" text="Il faut Commencer par Une Letter Majusclue" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="addresseErrorLabel" layoutX="42.0" layoutY="365.0" text="Il faut Commencer par Une Letter Majusclue" textFill="#eb053b" visible="false" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="78.0" layoutY="434.0" prefHeight="31.0" prefWidth="58.0" style="-fx-background-radius: 4;" styleClass="btn" stylesheets="@../../../CSS/login.css" text="   Ajouter" textFill="WHITE" visible="false" />
+            <ChoiceBox fx:id="Module" layoutX="16.0" layoutY="437.0" prefHeight="25.0" prefWidth="377.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

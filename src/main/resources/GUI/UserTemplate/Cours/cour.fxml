@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ParentAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="571.0" prefWidth="1041.0" style="-fx-background-color: #fffff; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Cours.CourPageController">
+   <children>
+      <Label layoutX="365.0" layoutY="60.0" text="Nos modules" textFill="#1a364b">
+         <font>
+            <Font name="Segoe UI Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="118.0" prefHeight="20.0" prefWidth="887.0" text="Avec nos modules intuitifs et puissants, vous pouvez optimiser votre productivité et atteindre vos objectifs avec facilité." textFill="#3f6a84" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="88.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="CoursScrollPane" layoutX="58.0" layoutY="145.0" prefHeight="400.0" prefWidth="973.0" style="-fx-background-color: transparent;">
+         <content>
+            <FlowPane fx:id="CoursFlowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="421.0" prefWidth="960.0" style="-fx-background-color: white;" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

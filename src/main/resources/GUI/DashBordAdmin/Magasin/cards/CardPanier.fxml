@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="207.0" prefWidth="498.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courstask.Controllers.CardModuleController">
+    <children>
+        <ImageView fx:id="ImgModulePath" fitHeight="130.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="38.5" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="321.0" AnchorPane.topAnchor="38.5">
+            <image>
+                <Image url="@../../../Images/ModuleImage.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="435.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="458.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="182.0">
+            <image>
+                <Image url="@../../../Images/DetailsImage.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="184.0" layoutY="172.0" prefHeight="17.0" prefWidth="56.0" text="Crée par :" AnchorPane.leftAnchor="184.0" AnchorPane.topAnchor="184.0">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+        <Label layoutX="249.0" layoutY="172.0" prefHeight="17.0" prefWidth="96.0" text="Sboui Wael" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="184.0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Label fx:id="nomModule" layoutX="195.0" layoutY="16.0" prefHeight="35.0" prefWidth="239.0" text="programmation Orientée Objet c++" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="descriptionModule" layoutX="190.0" layoutY="43.0" prefHeight="96.0" prefWidth="270.0" text="En fait, vous allez apprendre à coder de manière plus efficace et organisée. Et pour ça, vous allez apprendre à réfléchir différemment. C’est une approche totalement nouvelle, et je suis sûr que vous allez trouver ça passionnant !" wrapText="true" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="64.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

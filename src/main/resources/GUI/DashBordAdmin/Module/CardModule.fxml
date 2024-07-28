@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="207.0" maxWidth="498.0" minHeight="207.0" minWidth="498.0" prefHeight="207.0" prefWidth="498.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Module.CardModuleController">
+   <children>
+      <ImageView fx:id="ImgModulePath" fitHeight="130.0" fitWidth="150.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="364.0" AnchorPane.topAnchor="29.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="435.0" layoutY="168.0" onMouseClicked="#voirCours" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="458.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="182.0">
+         <image>
+            <Image url="@../../../assets/icons/Fleche.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="184.0" layoutY="172.0" prefHeight="17.0" prefWidth="56.0" text="Crée par :" AnchorPane.leftAnchor="184.0" AnchorPane.topAnchor="184.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="249.0" layoutY="172.0" prefHeight="17.0" prefWidth="96.0" text="Sboui Wael" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="184.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomModule" layoutX="190.0" layoutY="14.0" prefHeight="35.0" prefWidth="239.0" text="programmation Orientée Objet c++" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="descriptionModule" layoutX="190.0" layoutY="46.0" prefHeight="96.0" prefWidth="270.0" text="En fait, vous allez apprendre à coder de manière plus efficace et organisée. Et pour ça, vous allez apprendre à réfléchir différemment. C’est une approche totalement nouvelle, et je suis sûr que vous allez trouver ça passionnant !" wrapText="true" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="46.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="updateIcon" fitHeight="20.0" fitWidth="20.0" layoutX="34.0" layoutY="182.0" onMouseClicked="#updateModule" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/editUsed.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="deleteIcon" fitHeight="20.0" fitWidth="20.0" layoutX="69.0" layoutY="182.0" onMouseClicked="#deleteModule" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="190.0" layoutY="151.0" text="Temps Estimé">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="151.0" text="Heures" />
+      <Label fx:id="tempsM" layoutX="268.0" layoutY="151.0" prefHeight="17.0" prefWidth="27.0" />
+   </children>
+</AnchorPane>

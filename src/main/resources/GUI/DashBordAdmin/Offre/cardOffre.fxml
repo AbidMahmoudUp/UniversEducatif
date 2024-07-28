@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="163.0" prefWidth="316.0" style="-fx-background-color: #FCFCFC; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Offre.OffreCardController">
+   <children>
+      <Label fx:id="nom_label" layoutX="122.0" layoutY="16.0" prefHeight="26.0" prefWidth="160.0" text="Esprit:" textFill="#2c4869" wrapText="true" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="16.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="des_label" alignment="TOP_LEFT" layoutX="122.0" layoutY="38.0" maxHeight="116.0" maxWidth="490.0" prefHeight="64.0" prefWidth="204.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy." textFill="#3e3e3e" wrapText="true" AnchorPane.leftAnchor="122.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="niv_label" layoutX="121.0" layoutY="97.0" prefHeight="18.0" prefWidth="500.0" text="Niveau requis :" wrapText="true" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="97.0">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label fx:id="date_deb_label" layoutX="187.0" layoutY="11.0" prefHeight="18.0" prefWidth="500.0" text="Date de creation:" visible="false" wrapText="true" />
+      <Label fx:id="date_fin_label" layoutX="121.0" layoutY="113.0" prefHeight="18.0" prefWidth="500.0" text="Date d'expiration :" wrapText="true" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="113.0">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <ImageView accessibleRole="BUTTON" fitHeight="20.0" fitWidth="20.0" layoutX="117.0" layoutY="133.0" onMouseClicked="#supprimerButton" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="133.0">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="283.0" layoutY="10.0" onMouseClicked="#updateButton" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@../../../Images/EditOffre.png" />
+         </image>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="16.0" fitWidth="16.0" layoutX="287.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="136.0">
+         <image>
+            <Image url="@../../../Images/SeeMore.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="100.0" layoutX="7.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="34.0">
+         <image>
+            <Image url="@../../../Images/OffreFrame.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="218.0" layoutY="134.0" text="Voir Dossiers" textFill="#2c4869" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="134.0" />
+   </children>
+</AnchorPane>

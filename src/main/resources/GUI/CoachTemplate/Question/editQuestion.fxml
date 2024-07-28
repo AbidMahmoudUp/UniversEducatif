@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AddPopUpModule" prefHeight="485.0" prefWidth="406.0" style="-fx-background-color: white; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Examen.UpdateQuestionController">
+   <children>
+      <Label layoutX="142.0" layoutY="32.0" text="Ajouter Question" textFill="#419db7">
+         <font>
+            <Font name="Segoe UI Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="88.0" text="Question" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="questionTextField" layoutX="24.0" layoutY="113.0" prefHeight="25.0" prefWidth="365.0" AnchorPane.leftAnchor="15.0" />
+      <Button layoutX="15.2" layoutY="458.0" mnemonicParsing="false" onAction="#updateQuestion" text="Editer" AnchorPane.leftAnchor="15.2" />
+      <Label layoutX="15.0" layoutY="150.0" text="Choix1">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="choix1TextField" layoutX="9.0" layoutY="175.0" prefHeight="25.0" prefWidth="365.0" />
+      <Label layoutX="15.0" layoutY="215.0" text="Choix2">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="choix2TextField" layoutX="9.0" layoutY="240.0" prefHeight="25.0" prefWidth="365.0" />
+      <Label layoutX="15.0" layoutY="281.0" text="Choix3">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="choix3TextField" layoutX="9.0" layoutY="306.0" prefHeight="25.0" prefWidth="365.0" />
+      <Label layoutX="15.0" layoutY="347.0" text="ChoixCorrecte">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="choixCorrectTextField" layoutX="9.0" layoutY="372.0" prefHeight="25.0" prefWidth="365.0" />
+      <Label layoutX="15.0" layoutY="400.0" text="Durée :" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="400.0">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="dureeTextField" layoutX="9.0" layoutY="425.0" prefHeight="25.0" prefWidth="365.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="425.0" />
+   </children>
+</AnchorPane>

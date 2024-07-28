@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#deleteCommande" prefHeight="207.0" prefWidth="338.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Magasin.Commande.CardCommandeController">
+    <children>
+
+        <ImageView fx:id="id_produit" fitHeight="20.0" fitWidth="20.0" layoutX="460.0" layoutY="146.0" onMouseClicked="#redirection" pickOnBounds="true" preserveRatio="true" userData="ID_DU_PRODUIT" visible="false" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="146.0">
+            <image>
+                <Image url="@../../../../Images/EditOffre.png" />
+            </image>
+        </ImageView>
+
+        <Label fx:id="dateCommande" layoutX="132.0" layoutY="14.0" prefHeight="35.0" prefWidth="239.0" text="date" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="157.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <Label fx:id="nomProduit" layoutX="52.0" layoutY="83.0" prefHeight="17.0" prefWidth="100.0" text="1" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="83.0" />
+        <Label fx:id="prix" layoutX="157.0" layoutY="83.0" prefHeight="17.0" prefWidth="100.0" text="Prixinit+Marge" AnchorPane.leftAnchor="157.0" AnchorPane.topAnchor="83.0" />
+
+        <Label layoutX="106.0" layoutY="176.0" text="total" />
+        <Label fx:id="totale" layoutX="154.0" layoutY="176.0" text="s" />
+        <Label fx:id="id_client" layoutX="31.0" layoutY="73.0" prefHeight="18.0" prefWidth="71.0" text="id client" visible="false" />
+
+        <ImageView fx:id="Bdelete" fitHeight="35.0" fitWidth="28.0" layoutX="296.0" layoutY="15.0" onMouseClicked="#deleteCommande" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../../../../Images/delete.png" />
+            </image>
+            <viewport>
+                <Rectangle2D minY="39.0" />
+            </viewport>
+        </ImageView>
+    </children>
+</AnchorPane>

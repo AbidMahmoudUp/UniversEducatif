@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorParent" prefHeight="346.0" prefWidth="602.0" style="-fx-background-color: #FCFCFC; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Quiz.CardReponseController">
+    <children>
+        <Label fx:id="QuestionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="9.0" prefHeight="54.0" prefWidth="561.0" text=" Quelle est la principale différence entre une structure et une classe en programmation ?" textAlignment="CENTER" textFill="#3f6a84" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <AnchorPane fx:id="ap1" layoutX="-1.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="602.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;" AnchorPane.topAnchor="86.0">
+         <children>
+              <ImageView fx:id="C1" fitHeight="18.0" fitWidth="21.0" layoutX="570.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/tick.png" />
+                  </image>
+              </ImageView>
+            <Label fx:id="choix1" layoutX="31.0" layoutY="4.0" prefHeight="34.0" prefWidth="405.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="4.0" />
+            <Circle fill="#d9d9d9" layoutX="21.0" layoutY="33.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="24.0" AnchorPane.topAnchor="22.0" />
+            <Label layoutX="16.0" layoutY="11.0" prefHeight="17.0" prefWidth="16.0" text="A" textFill="#6c63ff" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="11.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <ImageView fx:id="R1" fitHeight="18.0" fitWidth="18.0" layoutX="570.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/close.png" />
+                  </image>
+              </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap2" layoutY="165.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="602.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;" AnchorPane.topAnchor="171.0">
+         <children>
+            <Label fx:id="choix2" layoutX="31.0" layoutY="4.0" prefHeight="34.0" prefWidth="432.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="4.0" />
+            <Circle fill="#d9d9d9" layoutX="14.0" layoutY="33.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="24.0" AnchorPane.topAnchor="22.0" />
+            <Label layoutX="10.0" layoutY="12.0" prefHeight="17.0" prefWidth="16.0" text="B" textFill="#6c63ff" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <ImageView fx:id="C2" fitHeight="18.0" fitWidth="21.0" layoutX="562.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/tick.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="R2" fitHeight="18.0" fitWidth="18.0" layoutX="562.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/close.png" />
+                  </image>
+              </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap3" layoutX="-1.0" layoutY="256.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="602.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;" AnchorPane.topAnchor="256.0">
+         <children>
+            <Label fx:id="choix3" layoutX="31.0" layoutY="4.0" prefHeight="34.0" prefWidth="432.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="4.0" />
+            <Circle fill="#d9d9d9" layoutX="18.0" layoutY="35.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="22.0" AnchorPane.topAnchor="24.0" />
+            <Label layoutX="12.0" layoutY="14.0" prefHeight="17.0" prefWidth="16.0" text="C" textFill="#6c63ff" AnchorPane.bottomAnchor="12.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <ImageView fx:id="R3" fitHeight="18.0" fitWidth="18.0" layoutX="570.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/close.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="C3" fitHeight="18.0" fitWidth="21.0" layoutX="570.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <image>
+                      <Image url="@../../../Images/tick.png" />
+                  </image>
+              </ImageView>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

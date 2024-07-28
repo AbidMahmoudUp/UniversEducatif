@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1111.0" style="-fx-background-color: #F5F7FB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Examen.ExamController">
+   <children>
+      <Label layoutX="198.0" layoutY="57.0" text="Gestion des Examens" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="42.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="DisplayExamenAnchor" layoutX="43.0" layoutY="149.0" prefHeight="594.0" prefWidth="1009.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0">
+         <children>
+            <MenuButton fx:id="tripar" layoutX="651.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 4;" text="Type">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemClicked" text="Module" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemClicked" text="Date" />
+               </items>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MenuButton>
+            <Label layoutX="585.0" layoutY="15.0" prefHeight="20.0" prefWidth="62.0" text="Triée par :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="ScrollPaneExamen" layoutX="1.0" layoutY="62.0" prefHeight="529.0" prefWidth="1021.0" style="-fx-background-color: transparent;">
+               <content>
+                  <FlowPane fx:id="examFlowPane" layoutX="43.0" layoutY="149.0" prefHeight="551.0" prefWidth="1102.0" style="-fx-background-color: white;" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="882.0" layoutY="15.0" prefHeight="20.0" prefWidth="20.0" text="Tri">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="ASC" fitHeight="14.0" fitWidth="14.0" layoutX="908.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/arrow_drop_downUsed.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="DESC" fitHeight="14.0" fitWidth="14.0" layoutX="908.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/arrow_drop_downUsed.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="chercher" layoutX="67.0" layoutY="10.0" onKeyTyped="#loadExamData" prefHeight="28.0" prefWidth="224.0" promptText="chercher ..." style="-fx-background-color: #f5f5f5;" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="732.0" AnchorPane.topAnchor="10.0" />
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="260.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="739.0" AnchorPane.topAnchor="11.0">
+               <image>
+                  <Image url="@../../../Images/search.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Circle fx:id="circleAdd" fill="#4a8292" layoutX="1036.0" layoutY="55.0" radius="20.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="1016.0" AnchorPane.topAnchor="35.0" />
+      <ImageView fx:id="addIcon" fitHeight="20.0" fitWidth="24.0" layoutX="1026.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/add.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="popUpAddModule" prefHeight="721.0" prefWidth="1111.0" visible="false" />
+   </children>
+</AnchorPane>

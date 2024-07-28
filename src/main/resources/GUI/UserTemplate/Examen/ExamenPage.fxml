@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="571.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Quiz.ExamenPageController">
+   <children>
+      <AnchorPane layoutX="1.0" layoutY="105.0">
+         <children>
+            <ScrollPane fx:id="ScrollPaneExamen" prefHeight="467.0" prefWidth="1041.0">
+               <content>
+                  <FlowPane fx:id="FlowPaneExamen" prefHeight="467.0" prefWidth="1028.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="445.0" layoutY="38.0" text="Nos Exman">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="471.0" layoutY="78.0" text="Description" />
+   </children>
+</AnchorPane>

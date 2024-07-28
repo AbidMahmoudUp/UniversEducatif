@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="examFlowPane" prefHeight="485.0" prefWidth="406.0" style="-fx-background-color: white; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Examen.AddExamController">
+   <children>
+      <Label layoutX="142.0" layoutY="32.0" prefHeight="22.0" prefWidth="138.0" text="Ajouter Examen" textFill="#419db7">
+         <font>
+            <Font name="Segoe UI Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="158.0" prefHeight="18.0" prefWidth="128.0" text="Date de l'examen" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="Segoe UI" size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="24.0" layoutY="183.0" prefHeight="25.0" prefWidth="365.0" AnchorPane.leftAnchor="15.0" />
+      <Button layoutX="24.0" layoutY="452.0" mnemonicParsing="false" onMouseClicked="#addExam" prefHeight="26.0" prefWidth="56.0" text="ajouter" AnchorPane.leftAnchor="15.0" />
+      <Button layoutX="339.0" layoutY="452.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="26.0" prefWidth="56.0" text="Clear" AnchorPane.rightAnchor="15.0" />
+   </children>
+</AnchorPane>

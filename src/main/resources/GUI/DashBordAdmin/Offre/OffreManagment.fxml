@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="721.0" prefWidth="1107.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Offre.OffreManagmentController">
+    <children>
+      <AnchorPane layoutX="1.0" layoutY="68.0" prefHeight="46.0" prefWidth="1108.0" style="-fx-background-color: &quot;#F5F5F5&quot;; -fx-border-color: &quot;#EDEDED&quot;;">
+         <children>
+            <Label fx:id="AllLabel" layoutX="50.0" layoutY="14.0" onMouseClicked="#showEventManagment" text="Societés">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="UsersLabel" layoutX="120.0" layoutY="14.0" text="Offres">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="CoachsLabel" layoutX="178.0" layoutY="14.0" onMouseClicked="#showDossierManagment" text="Dossiers">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <Line fx:id="lineAll" endX="-55.0" endY="-1.0" layoutX="152.0" layoutY="31.0" startX="-103.0" startY="-1.0" stroke="#2d458b" />
+            <Line fx:id="lineUsers" endX="-66.0" endY="-1.0" layoutX="221.0" layoutY="30.0" startX="-101.0" startY="-1.0" stroke="#2d458b" />
+            <Line fx:id="lineCoaches" endX="-41.0" layoutX="266.0" layoutY="30.0" startX="-88.0" stroke="#2d458b" />
+            <Line fx:id="lineAdmin" endX="-12.333343505859375" layoutX="416.0" layoutY="30.0" startX="-103.66665649414062" stroke="#2d458b" visible="false" />
+         </children>
+      </AnchorPane>
+        <AnchorPane fx:id="displayOffre" layoutX="43.0" layoutY="149.0" prefHeight="594.0" prefWidth="1009.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="44.0">
+            <children>
+                <ChoiceBox fx:id="triCB" layoutX="714.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #f5f5f5;" />
+                <Label layoutX="645.0" layoutY="11.0" text="Triée Par :">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="searchTF" layoutX="212.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: &quot;f5f5f5&quot;;" />
+                <AnchorPane layoutX="194.0" layoutY="8.0" prefHeight="25.0" prefWidth="20.0" style="-fx-background-color: &quot;f5f5f5&quot;; -fx-background-radius: 2;">
+                    <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/search.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Label fx:id="TypeDisplayed" layoutX="24.0" layoutY="12.0" text="Gestion Offre">
+                    <font>
+                        <Font name="Segoe UI Bold" size="16.0" />
+                    </font>
+                </Label>
+            <AnchorPane layoutY="80.0" prefHeight="686.0" prefWidth="981.0" style="-fx-background-color: white;">
+               <children>
+                      <ScrollPane fx:id="ScrollPaneOffre" prefHeight="686.0" prefWidth="1013.0" style="-fx-background-color: white;">
+                     <content>
+                        <FlowPane fx:id="offreContainer" hgap="16.0" prefHeight="677.0" prefWidth="1014.0" style="-fx-background-color: white;" vgap="24.0" />
+                     </content>
+                      </ScrollPane>
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
+        <Label fx:id="TypeDisplayed1" layoutX="69.0" layoutY="33.0" text="Gestion Evenement">
+            <font>
+                <Font name="Segoe UI Bold" size="16.0" />
+            </font>
+        </Label>
+        <AnchorPane fx:id="AnchorPaneAddOffre" layoutX="1.0" prefHeight="803.0" prefWidth="1108.0" visible="false" />
+        <Circle fx:id="addOffre" fill="DODGERBLUE" layoutX="1050.0" layoutY="40.0" onMouseClicked="#showPopUpAddOffre" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+        <ImageView fx:id="addIcon" fitHeight="20.0" fitWidth="20.0" layoutX="1040.0" layoutY="30.0" onMouseClicked="#showPopUpAddOffre" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/add.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

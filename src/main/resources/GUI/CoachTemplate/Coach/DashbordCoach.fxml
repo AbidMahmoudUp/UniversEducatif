@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.DashbordController">
+    <children>
+        <AnchorPane fx:id="NavBar" layoutX="-3.0" prefHeight="64.0" prefWidth="1373.0" style="-fx-background-color: &quot;WHITE&quot;;">
+            <children>
+                <ImageView fx:id="dropDownMenu" fitHeight="24.0" fitWidth="24.0" layoutX="1335.0" layoutY="24.0" onMouseClicked="#ActivateDropDownMenuNavBar" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/arrow_drop_downUnused.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1075.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/chat_bubbleUnused.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="1018.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/notificationsUnused.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="278.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/menuUnused.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1161.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@../../../Images/MahmoudAbid.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="1223.0" layoutY="23.0" onMouseClicked="#ActivateDropDownMenuNavBar" prefHeight="24.0" prefWidth="139.0" text="Mahmoud Abid">
+                    <font>
+                        <Font name="Segoe UI" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="idUser" layoutX="414.0" layoutY="-3.0" prefHeight="70.0" prefWidth="98.0" visible="false" />
+            <Rectangle fx:id="pictureNavBarUser" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="1161.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="42.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="DashBord" prefHeight="786.0" prefWidth="259.0" style="-fx-background-color: &quot;#222E3C&quot;;">
+            <children>
+                <ImageView fitHeight="134.0" fitWidth="132.0" layoutX="57.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/GreyLogo.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="32.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/ProfileUnused.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="30.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/book.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="profileLabelDashBord" layoutX="24.0" layoutY="183.0" onMouseClicked="#SwitchToProfile" prefHeight="37.0" prefWidth="139.0" text="             Profile" textFill="#d9d9d9" />
+                <Label fx:id="GestionUtilisateurLabelDashBord" layoutX="30.0" layoutY="240.0" onMouseClicked="#SwitchToGestionCours" prefHeight="34.0" prefWidth="159.0" text="          Gestion Cours" textFill="WHITE" />
+                <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="30.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/Examen.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="GestionExamenLabelDashBord" layoutX="22.0" layoutY="285.0" onMouseClicked="#SwitchToExamen" prefHeight="37.0" prefWidth="139.0" text="             Gestion Examen" textFill="#d9d9d9" />
+                <AnchorPane fx:id="dashBordAnimation" layoutX="-6.0" layoutY="181.0" prefHeight="36.0" prefWidth="264.0">
+                    <children>
+                        <AnchorPane fx:id="lineairgradientdashbord" layoutX="4.0" prefHeight="37.0" prefWidth="256.0" style="-fx-background-color: &quot;#0C68D3&quot;; -fx-opacity: 5%;" />
+                        <AnchorPane fx:id="selectedOption" layoutX="1.0" prefHeight="35.0" prefWidth="8.0" style="-fx-background-color: &quot;#3B7DDD&quot;;" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="ProfileContent" layoutX="313.5" layoutY="105.0">
+            <children>
+                <AnchorPane fx:id="profileAnchorpane" layoutX="1.5" prefHeight="643.0" prefWidth="214.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 10;">
+                    <children>
+                        <Line endX="107.0" layoutX="107.0" layoutY="231.0" startX="-107.0" />
+                        <ImageView fx:id="pictureAdmin" fitHeight="108.0" fitWidth="108.0" layoutX="51.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" visible="false">
+                            <image>
+                                <Image url="@../../../Images/MahmoudAbidBorder.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="6.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/location_on.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="6.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/responsabilty.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="6.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/home.png" />
+                            </image>
+                        </ImageView>
+                        <Line endX="107.0" layoutX="106.0" layoutY="410.0" startX="-107.0" />
+                        <Label layoutX="6.0" layoutY="9.0" text="Profile" textFill="#768088">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="262.0" text="Vit à">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="308.0" text="Responsable">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="33.0" layoutY="353.0" text="Originaire de">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="422.0" text="Bio" textFill="#768088">
+                            <font>
+                                <Font name="Segoe UI Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="5.0" layoutY="235.0" text="Details" textFill="#768088">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="118.0" layoutY="355.0" text="Sfax" textFill="#768088" />
+                        <Label layoutX="117.0" layoutY="310.0" text="Gestion Utilisateur" textFill="#768088" />
+                        <Label layoutX="72.0" layoutY="264.0" text="Ariana Soghra" textFill="#768088" />
+                        <Label fx:id="nameAdmin" layoutX="42.0" layoutY="161.0" text="Mahmoud Abid" textFill="#768088">
+                            <font>
+                                <Font name="Segoe UI Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="46.0" layoutY="190.0" text="Full Stack Developer" textFill="#768088">
+                            <font>
+                                <Font name="Segoe UI" size="14.0" />
+                            </font>
+                        </Label>
+                        <TextArea layoutX="17.0" layoutY="455.0" prefHeight="164.0" prefWidth="176.0" style="-fx-border-style: none;" />
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="189.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/editUnused.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="189.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/editUnused.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="136.0" layoutY="132.0" onMouseClicked="#pickImage" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Images/Camera.png" />
+                            </image>
+                        </ImageView>
+                        <Circle fx:id="circle" fill="DODGERBLUE" layoutX="105.0" layoutY="96.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke-width: 0;" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="activitiesAnchorPane" layoutX="268.5" layoutY="1.0" prefHeight="643.0" prefWidth="736.0" style="-fx-background-color: &quot;WHITE&quot;; -fx-background-radius: 10;">
+                    <children>
+                        <Label layoutX="21.0" layoutY="14.0" text="Activités" textFill="#768088">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                  <ScrollPane fx:id="LogsScrollPane" layoutY="39.0" prefHeight="605.0" prefWidth="736.0" style="-fx-background-color: transparent;">
+                     <content>
+                        <FlowPane fx:id="LogsFlowPane" prefHeight="585.0" prefWidth="724.0" style="-fx-background-color: white;" />
+                     </content>
+                  </ScrollPane>
+                  <ImageView fx:id="triButtonActivityDESC" fitHeight="24.0" fitWidth="20.0" layoutX="84.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/arrow_drop_downUsed.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="triButtonActivityASC" fitHeight="24.0" fitWidth="20.0" layoutX="84.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../../../Images/arrow_drop_downUsed.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="DropDownMenuNavBar" layoutX="1203.0" layoutY="43.0" prefHeight="187.0" prefWidth="147.0" style="-fx-background-color: &quot;white&quot;; -fx-border-radius: 3; -fx-border-width: 1px; -fx-border-color: &quot;#d9d9d9&quot;;" visible="false">
+            <children>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="7.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/profile.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="11.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/logout.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="8.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/settings.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="7.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/analyse.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="8.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../Images/help.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="43.0" layoutY="27.0" text="Profile" />
+                <Label layoutX="43.0" layoutY="60.0" text="Analyse" />
+                <Label layoutX="3.0" layoutY="95.0" onMouseClicked="#Settings" prefHeight="24.0" prefWidth="108.0" text="          Parametre">
+                    <font>
+                        <Font name="Segoe UI" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="38.0" layoutY="126.0" text="Aide" />
+                <Label layoutX="11.0" layoutY="152.0" onMouseClicked="#logout" prefHeight="17.0" prefWidth="108.0" text="       Se Décontecter" />
+                <Line endX="114.0" layoutX="30.0" layoutY="86.0" startX="-27.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="SettingsAnchorPane" layoutX="259.0" layoutY="65.0" prefHeight="721.0" prefWidth="1107.0" visible="false" />
+        <AnchorPane fx:id="UserManagement" layoutX="259.0" layoutY="65.0" prefHeight="721.0" prefWidth="1107.0" visible="false" />
+      <AnchorPane fx:id="CoursManagement" layoutX="259.0" layoutY="65.0" prefHeight="721.0" prefWidth="1107.0" visible="false" />
+    </children>
+</AnchorPane>

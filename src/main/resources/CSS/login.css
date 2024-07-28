@@ -1,0 +1,15 @@
+.btn {
+    -fx-background-color: #1976D2;
+
+}
+
+.labelLogin{
+
+    -fx-background-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-border-color: #E0E5F2;
+}
+.labelLogin:focused {
+    -fx-border-color: #007BFF;
+}

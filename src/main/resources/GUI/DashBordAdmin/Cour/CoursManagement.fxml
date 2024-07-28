@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ParentAnchor" prefHeight="721.0" prefWidth="1111.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Cours.CoursManagementController">
+    <children>
+        <Label layoutX="198.0" layoutY="57.0" text="Gestion des Cours" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="42.0">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <AnchorPane fx:id="DisplayCours" layoutX="43.0" layoutY="149.0" prefHeight="570.0" prefWidth="1085.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="43.0">
+            <children>
+                <ScrollPane fx:id="ScrollPaneCours" layoutY="49.0" prefHeight="519.0" prefWidth="1085.0" style="-fx-background-color: transparent;">
+                    <content>
+                        <FlowPane fx:id="flowPaneCours" prefHeight="514.0" prefWidth="1079.0" style="-fx-background-color: white;" />
+                    </content>
+                </ScrollPane>
+              <TextField fx:id="chercher" layoutX="65.0" layoutY="14.0" onKeyReleased="#chercherCour" prefHeight="28.0" prefWidth="217.0" promptText="chercher ..." style="-fx-background-color: #f5f5f5;" />
+              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="258.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../../Images/search.png" />
+                  </image>
+              </ImageView>
+              <AnchorPane layoutX="839.0" layoutY="16.0" prefHeight="25.0" prefWidth="236.0">
+                  <children>
+                      <Label layoutY="4.0" text="Temps Estimé en Heures">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="156.0" layoutY="-3.0" onMouseClicked="#triAsc" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                          <image>
+                              <Image url="@../../../Images/arrow_drop_downUsed.png" />
+                          </image>
+                      </ImageView>
+                      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="156.0" layoutY="11.0" onMouseClicked="#triDesc" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../../../Images/arrow_drop_downUsed.png" />
+                          </image>
+                      </ImageView>
+                  </children>
+              </AnchorPane>
+              <Label layoutX="635.0" layoutY="18.0" text="Triée par :" AnchorPane.leftAnchor="635.0" AnchorPane.topAnchor="18.0">
+                  <font>
+                      <Font size="14.0" />
+                  </font>
+              </Label>
+              <MenuButton layoutX="715.0" layoutY="16.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #f5f5f5;" text="Type">
+                  <items>
+                      <MenuItem mnemonicParsing="false" text="Test1" />
+                      <MenuItem mnemonicParsing="false" text="Test2" />
+                      <MenuItem mnemonicParsing="false" text="Test3" />
+                  </items>
+              </MenuButton>
+            </children>
+        </AnchorPane>
+        <Circle fx:id="circleAdd" fill="#4a8292" layoutX="1074.0" layoutY="55.0" onMouseClicked="#openPopUp" radius="20.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="1054.0" AnchorPane.topAnchor="35.0" />
+        <ImageView fx:id="addCour" fitHeight="20.0" fitWidth="24.0" layoutX="1064.0" layoutY="45.0" onMouseClicked="#openPopUp" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/add.png" />
+            </image>
+        </ImageView>
+        <AnchorPane fx:id="popUpAddCours" prefHeight="721.0" prefWidth="1111.0" visible="false" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="575.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.User.SettingsController">
+   <children>
+      <AnchorPane fx:id="PasswordUpdateAnchorPane" layoutX="330.0" layoutY="42.0" prefHeight="289.0" prefWidth="704.0" style="-fx-background-color: &quot;white&quot;; -fx-background-radius: 8px;">
+         <children>
+            <TextField fx:id="TestFiledOldPassword" layoutX="21.0" layoutY="67.0" prefHeight="25.0" prefWidth="428.0" />
+            <PasswordField fx:id="oldPasswordFiled" layoutX="20.0" layoutY="67.0" onAction="#oldPasswordTextFiled" prefHeight="25.0" prefWidth="428.0" />
+            <TextField fx:id="TestFiledNewPassword" layoutX="21.0" layoutY="124.0" prefHeight="25.0" prefWidth="428.0" visible="false" />
+            <PasswordField fx:id="newPasswordFiled" layoutX="20.0" layoutY="124.0" onAction="#NewPasswordTextFiled" prefHeight="25.0" prefWidth="428.0" />
+            <TextField fx:id="TestFiledConfrimePassword" layoutX="19.0" layoutY="180.0" prefHeight="25.0" prefWidth="430.0" visible="false" />
+            <PasswordField fx:id="confirmePasswordFiled" layoutX="20.0" layoutY="180.0" onAction="#confirmePasswordTextFiled" prefHeight="25.0" prefWidth="428.0" />
+            <Label layoutX="20.0" layoutY="50.0" text="Ancien Mot De Passe" />
+            <Label layoutX="20.0" layoutY="105.0" text="noveau Mot De Passe" />
+            <Label layoutX="20.0" layoutY="163.0" text="Confimer Mot de Passe" />
+            <Button layoutX="26.0" layoutY="242.0" mnemonicParsing="false" onAction="#UpdatePassword" styleClass="btn" stylesheets="@../../../CSS/login.css" text="changer mot de passe" textFill="WHITE" />
+            <Line endX="570.0" layoutX="118.0" layoutY="37.0" startX="-108.0" />
+            <Label layoutX="12.0" layoutY="7.0" text="Changer Mot de passe">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="459.0" layoutY="65.0" prefHeight="151.0" prefWidth="209.0" style="-fx-background-color: f5f5f5; -fx-background-radius: 8;">
+               <children>
+                  <Label layoutX="22.0" layoutY="37.0" text="Conditions de mot de passe">
+                     <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="64.0" text="1. au moins 8 caractères">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="102.0" text="3.au moins un nombre ">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="82.0" text="2.au moins un caractères spéciale">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="oldpasswordErrorLabel" layoutX="22.0" layoutY="90.0" text="Mot de Passe Incorrect" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="newPasswordErrorLabel" layoutX="22.0" layoutY="148.0" text="Mot de Passe Incorrect" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmePasswordErrorLabel" layoutX="25.0" layoutY="204.0" text="Mot de Passe Incorrect" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="VisibiltyOnConfirmePassword" fitHeight="20.0" fitWidth="20.0" layoutX="425.0" layoutY="183.0" onMouseClicked="#visibilityOnConfirmePassword" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibilityOffConfirmePassword" fitHeight="20.0" fitWidth="20.0" layoutX="426.0" layoutY="183.0" onMouseClicked="#visibilityOffConfirmePassword" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibiltyOnOldPassword" fitHeight="20.0" fitWidth="20.0" layoutX="426.0" layoutY="70.0" onMouseClicked="#visibilityOnOldPassword" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibiltyOffOldPassword" fitHeight="20.0" fitWidth="20.0" layoutX="425.0" layoutY="69.0" onMouseClicked="#visibilityOffOldPassword" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibilityOnNewPassword" fitHeight="20.0" fitWidth="20.0" layoutX="425.0" layoutY="127.0" onMouseClicked="#visibilityOnNewPassword" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibiltyOffNewPassword" fitHeight="20.0" fitWidth="20.0" layoutX="425.0" layoutY="126.0" onMouseClicked="#visibilityOffNewPassword" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="informationProfileAnchorPane" layoutX="481.0" layoutY="30.0" prefHeight="451.0" prefWidth="482.0" style="-fx-background-color: &quot;WHITE&quot;;" visible="false">
+         <children>
+            <Label fx:id="firstNameLabel" layoutX="260.0" layoutY="62.0" text="Prénom" textFill="#768088">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="titlePageLabel" layoutX="20.0" layoutY="14.0" prefHeight="20.0" prefWidth="237.0" text="Les informations de votre profil" textFill="#1c1b1f">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastNameLabel" layoutX="16.0" layoutY="62.0" text="Nom" textFill="#768088">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="adressLabel" layoutX="257.0" layoutY="224.0" text="Adresse" />
+            <Label fx:id="EmailLabel" layoutX="257.0" layoutY="151.0" text="Email" />
+            <Label fx:id="warnningLabel1" layoutX="14.0" layoutY="109.0" prefHeight="33.0" prefWidth="428.0" text="votre nom peut apparaître ici où vous êtes mentionné.Vous pouvez le modifier ou le supprimer à tout moment" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="locationLabel" layoutX="17.0" layoutY="226.0" text="localisation" />
+            <Label fx:id="warnningLabel2" layoutX="13.0" layoutY="289.0" prefHeight="33.0" prefWidth="438.0" text="tous les champs de cette page sont facultatifs et peuvent être supprimés à tout moment. En les remplissant, vous nous autorisez à partager ces données partout où votre profil utilisateur apparaît." wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Button fx:id="UpdateButton" layoutX="21.0" layoutY="366.0" mnemonicParsing="false" onAction="#UpdateProfileUser" styleClass="btn" stylesheets="@../../../CSS/login.css" text="Mise à jour" textFill="WHITE" />
+            <Button fx:id="CancelButton" layoutX="148.0" layoutY="367.0" mnemonicParsing="false" text="Annuler" />
+            <TextField fx:id="locationTextFiled" layoutX="14.0" layoutY="247.0" prefHeight="25.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <TextField fx:id="lastnameTextFiled" layoutX="255.0" layoutY="81.0" prefHeight="27.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <TextField fx:id="PhoneNumberTextFiled" layoutX="14.0" layoutY="172.0" prefHeight="25.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <TextField fx:id="AdressTextFiled" layoutX="256.0" layoutY="247.0" prefHeight="25.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <TextField fx:id="firstNameTextFiled" layoutX="14.0" layoutY="81.0" prefHeight="27.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+            <Label fx:id="PhoneNumberLabel" layoutX="16.0" layoutY="151.0" text="Numéro Telephone" />
+            <Line fx:id="decorationLane" endX="-407.0" layoutX="416.0" layoutY="47.0" startX="22.0" stroke="#1c1b1f" />
+            <Label fx:id="idUser" layoutX="269.0" layoutY="388.0" prefHeight="48.0" prefWidth="48.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <TextField fx:id="EmailTextFiled" layoutX="258.0" layoutY="173.0" prefHeight="27.0" prefWidth="198.0" styleClass="labelLogin" stylesheets="@../../../CSS/login.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="OptionsAnchorPane" layoutX="13.0" layoutY="46.0" prefHeight="151.0" prefWidth="303.0" style="-fx-background-color: &quot;WHITE&quot;; -fx-background-radius: 8;">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="20.0" layoutX="22.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/security.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="profileInformations" layoutY="9.0" onMouseClicked="#switchToProfileInformation" prefHeight="33.0" prefWidth="198.0" text="                 Information Profile" />
+            <Label fx:id="SecuriteLabel" layoutX="-3.0" layoutY="48.0" onMouseClicked="#SwitchToUpdatePassword" prefHeight="33.0" prefWidth="202.0" text="                 Securité du Profile" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="deleteAnchorPane" layoutX="325.0" layoutY="371.0" prefHeight="118.0" prefWidth="704.0" style="-fx-background-color: white; -fx-background-radius: 8;" visible="false">
+         <children>
+            <Label layoutX="12.0" layoutY="48.0" text="la suppression de votre compte est définitive et irréversible">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="12.0" layoutY="14.0" text="Supprimer Votre Compte">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="18.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #D11A2A;" text="Supprimer" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

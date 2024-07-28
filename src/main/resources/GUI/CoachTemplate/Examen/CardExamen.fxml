@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="220.0" style="-fx-background-color: #fcfcfc; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Examen.ExamCardController">
+   <children>
+      <ImageView fx:id="edit" fitHeight="20.0" fitWidth="30.0" layoutX="194.0" layoutY="8.0" onMouseClicked="#openUpdateExam" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="8.0">
+         <image>
+            <Image url="@../../../Images/EditOffre.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="ExamenModule" layoutX="195.0" layoutY="16.0" prefHeight="35.0" prefWidth="239.0" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Examenid" layoutX="190.0" layoutY="43.0" prefHeight="30.0" prefWidth="164.0" visible="false" wrapText="true" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="64.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="delete" fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="188.0" onMouseClicked="#handleDeleteIconClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="details" fitHeight="16.0" fitWidth="16.0" layoutX="197.0" layoutY="208.0" onMouseClicked="#afficherquestions" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="7.0">
+         <image>
+            <Image url="@../../../Images/SeeMore.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="qrCodeImageView" fitHeight="40.0" fitWidth="40.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="8.0" />
+      <Label fx:id="ExamenDate" layoutX="80.0" layoutY="189.0" text="03/05/2024" textFill="#2c4869">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" layoutX="37.0" layoutY="109.0" prefHeight="78.0" prefWidth="163.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy." textFill="#3e3e3e" wrapText="true">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="ExamenModule" alignment="CENTER" layoutX="37.0" layoutY="92.0" text="Programation Procedurale" textAlignment="CENTER" textFill="#2c4869">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img" fitHeight="70.0" fitWidth="127.0" layoutX="48.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/ExamenFrame.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

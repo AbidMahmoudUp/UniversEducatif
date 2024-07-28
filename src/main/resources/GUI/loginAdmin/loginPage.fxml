@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="780.0" prefWidth="1000.0" style="-fx-background-color: &quot;whIte&quot;;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.LoginController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="546.4" layoutX="795.0" layoutY="24.0" pickOnBounds="true" AnchorPane.leftAnchor="794.4000244140625" AnchorPane.rightAnchor="0.5999755859375">
+         <image>
+            <Image url="@../../Images/LeftContent.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="visibilityStateValue" layoutX="584.0" layoutY="475.0" prefHeight="25.0" prefWidth="28.0" text="1" visible="false" />
+      <AnchorPane id="Registerform" fx:id="signup_form" layoutX="200.0" layoutY="102.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="username_label_signup" layoutX="6.0" layoutY="57.0" prefHeight="20.0" prefWidth="132.0" text="nom d utilisateur" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username_input_signup" layoutY="80.0" onMouseClicked="#focusOnUsernameFiled" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <ImageView fx:id="user_icon_sign_up" fitHeight="17.0" fitWidth="19.0" layoutX="411.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/user_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="UserNameErrorLabel" layoutX="6.0" layoutY="122.0" text="nom d utilisateur doit avoir une Letter Majuscle" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="email_label_signup" layoutX="6.0" layoutY="136.0" text="Email" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email_input_signup" layoutY="156.0" onMouseClicked="#focusOnEmailFiled" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <ImageView fx:id="email_icon_sign_up" fitHeight="17.0" fitWidth="19.0" layoutX="410.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="VisiblePasswordFeild" layoutY="234.0" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <PasswordField fx:id="password_input_signup" accessibleRole="TEXT_FIELD" layoutY="234.0" onMouseClicked="#focusOnPassword" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <TextField fx:id="VisiblePasswordFeildConfirmePassword" layoutX="-1.0" layoutY="314.0" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" visible="false" />
+            <PasswordField fx:id="confirmepassword_input_signup" layoutY="314.0" onMouseClicked="#focusOnConfirmePassword" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="password_label_signup" layoutX="5.0" layoutY="215.0" text="Mot de passe" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="Sinscrire" layoutX="6.0" prefHeight="43.0" prefWidth="277.0" text="S'inscrire " textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="signup_button_signup_page" layoutY="387.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="confirmepassword_label_signup" layoutX="5.0" layoutY="293.0" text="Confirmer mot de passe" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="have_account_Label" layoutX="7.0" layoutY="458.0" text="Vous avez un compte ? ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="sign_in_sign_up_page" layoutX="141.0" layoutY="455.0" onAction="#navigationToSignIn" text=" Connectez-vous." textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="visibilityIconVisible" fitHeight="17.0" fitWidth="34.0" layoutX="413.0" layoutY="244.0" onMouseClicked="#changePwdVisibilityOff" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibilty_signup" fitHeight="17.0" fitWidth="34.0" layoutX="413.0" layoutY="244.0" onMouseClicked="#changePwdVisibility" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="confirmePasswordErrorLabel" layoutX="6.0" layoutY="356.0" text="Mot de passe invalide" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordErrorLabel" layoutX="6.0" layoutY="276.0" text="Mot de passe invalide" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="EmailErrorLabel" layoutX="6.0" layoutY="198.0" text="Email invalide" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="visibilityIconVisibleConfirmePassword" fitHeight="17.0" fitWidth="34.0" layoutX="415.0" layoutY="326.0" onMouseClicked="#changePwdVisibilityOffConfirmePassword" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="confirm_password_visibilty_signup" fitHeight="17.0" fitWidth="19.0" layoutX="416.0" layoutY="326.0" onMouseClicked="#changePwdVisibilityOnConfirmePassword" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="signin_form" layoutX="150.0" layoutY="150.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="se_connecter" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="277.0" style="-fx-background-color: &quot;transparent&quot;;" text="Se Connecter" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email_input_login" layoutX="-1.0" layoutY="125.0" onAction="#focusOnEmailFiled" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="email_label_login" layoutX="8.0" layoutY="102.0" prefHeight="18.0" prefWidth="51.0" text="Email" textFill="#2b3674" AnchorPane.leftAnchor="8.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="VisiblePasswordFeildLogin" layoutY="206.0" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <PasswordField fx:id="password_input_login" layoutX="-1.0" layoutY="206.0" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Button fx:id="Sign_in_login" layoutY="307.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="password_label_login" layoutX="6.0" layoutY="184.0" prefHeight="17.0" prefWidth="85.0" text="Mot de passe" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="forget_password_login" layoutX="6.0" layoutY="260.0" onAction="#forget_password_login" text="mot de passe oubliée ?" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <Label fx:id="dont_have_account_label_login" layoutX="12.0" layoutY="349.0" prefHeight="35.0" prefWidth="211.0" text="N'avez-vous pas de compte ?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="inscrivez_vous_login" layoutX="193.0" layoutY="355.0" onAction="#navigationToSignUp" text=" Inscrivez-vous" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="visibilityIconVisibleLogin" fitHeight="17.0" fitWidth="34.0" layoutX="414.0" layoutY="218.0" onMouseClicked="#changePwdVisibilityOffLogin" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Images/visibility.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="invisible_password_login" fitHeight="18.0" fitWidth="25.0" layoutX="413.0" layoutY="217.0" onMouseClicked="#changePwdVisibilityOnLogin" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="ValidationLogin" layoutX="13.0" layoutY="75.0" text="Mot de passe incorrect. Veuillez réessayer." textFill="#eb053b" AnchorPane.leftAnchor="13.0">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="184.0" layoutY="432.0" onMouseClicked="#handleSignInButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/googleicon.png" />
+               </image>
+            </ImageView>
+            <Line endX="91.0" layoutX="102.0" layoutY="414.0" startX="-100.0" stroke="#1976d2" />
+            <Label layoutX="208.0" layoutY="405.0" text="OR" textFill="#4a4949">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Line endX="88.0" layoutX="353.0" layoutY="414.0" startX="-109.0" stroke="#1976d2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="forgetPasswordFormAnchor" layoutX="200.0" layoutY="102.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="se_connecter1" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="277.0" style="-fx-background-color: &quot;transparent&quot;;" text="Mot de passe Oubliée" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email_input_forgetPassword" layoutX="-1.0" layoutY="125.0" onAction="#emailVerificationOnFocus" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="email_label_forgetPassword" layoutX="8.0" layoutY="102.0" prefHeight="18.0" prefWidth="51.0" text="Email" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="sendEmail" layoutY="210.0" mnemonicParsing="false" onAction="#GoToVerification" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Envoyer" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="dont_have_account_label_login1" layoutX="12.0" layoutY="273.0" prefHeight="35.0" prefWidth="228.0" text="tu te souviens de ton mot de passe ?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="inscrivez_vous_login1" layoutX="240.0" layoutY="279.0" onAction="#navigationToSignIn" text="Se connecter" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login1" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="emailForgetPasswordErrorLabel" layoutX="6.0" layoutY="171.0" text="Adresse e-mail non trouvée !" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="verificationFormAnchorPane" layoutX="210.0" layoutY="112.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="se_connecter11" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="277.0" style="-fx-background-color: &quot;transparent&quot;;" text="Mot de passe Oubliée" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="verificationCodeInput" layoutX="-1.0" layoutY="125.0" onAction="#CodeVerificationOnFocus" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="email_label_login11" layoutX="8.0" layoutY="102.0" prefHeight="18.0" prefWidth="139.0" text="Code De vérification" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="Sign_in_login11" layoutY="210.0" mnemonicParsing="false" onAction="#goToResetPassword" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Vérification" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="dont_have_account_label_login11" layoutX="12.0" layoutY="273.0" prefHeight="35.0" prefWidth="228.0" text="tu te souviens de ton mot de passe ?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="ConnectVerification" layoutX="240.0" layoutY="279.0" onAction="#navigationToSignIn" text="Se connecter" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login11" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="verificationCodeErrorLabel" layoutX="6.0" layoutY="169.0" text="Code de vérification est incorrect !" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="resetPasswordFormAnchorPane" layoutX="210.0" layoutY="112.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label fx:id="se_connecter2" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="302.0" style="-fx-background-color: &quot;transparent&quot;;" text="Réinitialisez mot de passe" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="email_label_login2" layoutX="6.0" layoutY="104.0" prefHeight="18.0" prefWidth="99.0" text="Mot de passe" textFill="#2b3674" AnchorPane.bottomAnchor="358.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="confirmePasswordRest" layoutX="-1.0" layoutY="210.0" onAction="#ConfirmePasswordResetOnFocus" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Button fx:id="resetButton" layoutY="295.0" mnemonicParsing="false" onAction="#ResetPassword" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Réinitialiser" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="password_label_login1" layoutX="6.0" layoutY="188.0" prefHeight="20.0" prefWidth="170.0" text="Confirmer Mot de passe" textFill="#2b3674">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="dont_have_account_label_login2" layoutX="12.0" layoutY="351.0" prefHeight="35.0" prefWidth="227.0" text="tu te souviens de ton mot de passe ?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="inscrivez_vous_login2" layoutX="237.0" layoutY="357.0" onAction="#navigationToSignInFromReset" text="Se connecter" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login2" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="invisible_password_login1" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/visibility_off_Unused.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="PasswordInputRest" layoutY="127.0" onAction="#PasswordResetOnFocus" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="ResetPasswordErrorLabel" layoutX="4.0" layoutY="69.0" text="Les mot de passe ne sont pas identique !" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="verificationFormSignUpAnchorPane" layoutX="148.0" layoutY="137.0" prefHeight="542.0" prefWidth="449.0" style="-fx-background-color: &quot;white&quot;;" visible="false">
+         <children>
+            <Label fx:id="se_connecter111" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="277.0" style="-fx-background-color: &quot;transparent&quot;;" text="Confirmation Par Email" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ConfirmationCodeInput" layoutX="-1.0" layoutY="125.0" onAction="#CodeVerificationOnFocus" prefHeight="38.5" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Label fx:id="email_label_login111" layoutX="8.0" layoutY="102.0" prefHeight="18.0" prefWidth="139.0" text="Code De vérification" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="SignUpConfirmation" layoutY="210.0" mnemonicParsing="false" onAction="#SignUpConfirmation" prefHeight="35.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Vérification" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="dont_have_account_label_login111" layoutX="12.0" layoutY="273.0" prefHeight="35.0" prefWidth="228.0" text="Vous avez déja un compte?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="ConnectVerification1" layoutX="181.0" layoutY="279.0" onAction="#navigationToSignIn" text="Se connecter" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login111" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="verificationCodeErrorLabel1" layoutX="6.0" layoutY="169.0" text="Code de vérification est incorrect !" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="verificationFormGoogleAnchorPane" layoutX="150.0" layoutY="167.0" prefHeight="542.0" prefWidth="442.0" style="-fx-background-color: &quot;white&quot;;" visible="false">
+         <children>
+            <Label fx:id="se_connecter112" layoutX="3.0" layoutY="11.0" prefHeight="43.0" prefWidth="380.0" style="-fx-background-color: &quot;transparent&quot;;" text="Confirmation de compte Google" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="email_label_login112" layoutX="8.0" layoutY="102.0" prefHeight="18.0" prefWidth="139.0" text="Code De vérification" textFill="#2b3674">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="dont_have_account_label_login112" layoutX="12.0" layoutY="273.0" prefHeight="35.0" prefWidth="228.0" text="tu te souviens de ton mot de passe ?" textFill="#2b3674">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="ConnectVerification2" layoutX="240.0" layoutY="279.0" onAction="#navigationToSignIn" text="Se connecter" textFill="#1875ff">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fx:id="email_icon_login112" fitHeight="18.0" fitWidth="25.0" layoutX="412.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/email_Unused.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="verificationCodeErrorLabel2" layoutX="6.0" layoutY="169.0" text="Code de vérification est incorrect !" textFill="#eb053b">
+               <font>
+                  <Font name="Segoe UI" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="GoogleCode" layoutX="-2.0" layoutY="124.0" prefHeight="43.0" prefWidth="442.0" styleClass="labelLogin" stylesheets="@../../CSS/login.css" />
+            <Button layoutY="209.0" mnemonicParsing="false" onAction="#try2" prefHeight="50.0" prefWidth="442.0" style="-fx-background-radius: 8;" styleClass="btn" stylesheets="@../../CSS/login.css" text="Vérification" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

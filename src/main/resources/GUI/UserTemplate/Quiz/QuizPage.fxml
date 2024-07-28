@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1366.0" style="-fx-background-color: &quot;#ffffff&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Quiz.QuizPageController">
+    <children>
+        <Label fx:id="QuestionLabel" layoutX="464.0" layoutY="63.0" prefHeight="50.0" prefWidth="663.0" text=" Quelle est la principale différence entre une structure et une classe en programmation ?" textFill="#3f6a84" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <AnchorPane fx:id="ap1" layoutX="490.0" layoutY="241.0" onMouseClicked="#checkRadioButton1" prefHeight="79.0" prefWidth="513.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;" AnchorPane.leftAnchor="490.0">
+         <children>
+              <Label fx:id="choix1" layoutX="32.0" layoutY="24.0" prefHeight="25.0" prefWidth="469.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="25.0" AnchorPane.topAnchor="29.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Circle fill="#d9d9d9" layoutX="20.0" layoutY="37.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="29.0" />
+            <Label layoutX="15.0" layoutY="26.0" text="A" textFill="#6c63ff" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <RadioButton fx:id="C1" layoutX="553.0" layoutY="32.0" mnemonicParsing="false" visible="false" />
+         </children>
+      </AnchorPane>
+        <Button fx:id="Termine" alignment="CENTER" layoutX="667.0" layoutY="639.0" mnemonicParsing="false" onMouseClicked="#afficherquestions" prefHeight="35.0" prefWidth="144.0" style="-fx-background-color: #19354A;" text="Termine" textFill="WHITE" AnchorPane.rightAnchor="555.0" />
+        <Button fx:id="nextButton" alignment="CENTER" layoutX="667.0" layoutY="639.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="144.0" style="-fx-background-color: #19354A;" text="Suivant" textFill="WHITE" AnchorPane.rightAnchor="555.0" />
+        <Label fx:id="timer" layoutX="1289.0" layoutY="55.0" text="timer" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/LeftImageExam.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1164.0" layoutY="649.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/RightImageExam.png" />
+         </image>
+      </ImageView>
+      <Line endX="1250.0" endY="8.666671752929688" layoutX="108.0" layoutY="174.0" startX="-108.0" />
+      <Label fx:id="numQuestion" layoutX="756.0" layoutY="25.0" text="5" />
+      <Label layoutX="701.0" layoutY="25.0" text="Question" />
+      <Label layoutX="665.0" layoutY="127.0" text="Un seule choix est correct" textFill="#3f6a84">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="768.0" layoutY="25.0" text="/" />
+      <Label layoutX="776.0" layoutY="25.0" text="10" />
+      <AnchorPane fx:id="ap2" layoutX="489.0" layoutY="366.0" onMouseClicked="#checkRadioButton2" prefHeight="79.0" prefWidth="513.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;">
+         <children>
+            <Label fx:id="choix2" layoutX="32.0" layoutY="24.0" prefHeight="25.0" prefWidth="469.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="25.0" AnchorPane.topAnchor="29.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Circle fill="#d9d9d9" layoutX="20.0" layoutY="37.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="29.0" />
+            <Label layoutX="15.0" layoutY="26.0" text="B" textFill="#6c63ff" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="C2" layoutX="553.0" layoutY="32.0" mnemonicParsing="false" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ap3" layoutX="489.0" layoutY="490.0" onMouseClicked="#checkRadioButton3" prefHeight="79.0" prefWidth="513.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 8;">
+         <children>
+            <Label fx:id="choix3" layoutX="32.0" layoutY="24.0" prefHeight="25.0" prefWidth="469.0" text=" Les structures ne peuvent pas avoir de membres de données." textFill="#3f6a84" wrapText="true" AnchorPane.bottomAnchor="25.0" AnchorPane.topAnchor="29.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Circle fill="#d9d9d9" layoutX="20.0" layoutY="37.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="29.0" />
+            <Label layoutX="15.0" layoutY="26.0" text="C" textFill="#6c63ff" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="C3" layoutX="553.0" layoutY="32.0" mnemonicParsing="false" visible="false" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

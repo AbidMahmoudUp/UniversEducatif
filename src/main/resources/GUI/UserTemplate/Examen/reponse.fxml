@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Quiz.ReponseController">
+   <children>
+      <AnchorPane layoutX="131.0" layoutY="46.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="46.0">
+         <children>
+            <ScrollPane fx:id="ReponseScroll" prefHeight="708.0" prefWidth="636.0" style="-fx-background-color: transparent;">
+               <content>
+                  <FlowPane fx:id="Rflowpane" prefHeight="757.0" prefWidth="637.0" style="-fx-background-color: white;" vgap="16.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="test" layoutX="188.0" layoutY="13.0" mnemonicParsing="false" onAction="#test" text="Button" visible="false" />
+      <AnchorPane layoutX="1024.0" layoutY="65.0" prefHeight="301.0" prefWidth="403.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10;" AnchorPane.leftAnchor="843.0" AnchorPane.rightAnchor="120.0">
+         <children>
+            <AnchorPane fx:id="q3" layoutX="322.0" layoutY="67.0" onMouseClicked="#Scroll3" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.rightAnchor="135.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="8.0" text="3" textFill="WHITE" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="q2" layoutX="90.0" layoutY="67.0" onMouseClicked="#Scroll2" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.rightAnchor="231.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="8.0" prefHeight="31.0" prefWidth="7.0" text="2" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="8.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q4" layoutX="319.0" layoutY="67.0" onMouseClicked="#Scroll4" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.rightAnchor="39.0">
+               <children>
+                  <Label layoutX="16.0" layoutY="9.0" text="4" textFill="WHITE" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q1" layoutX="29.0" layoutY="67.0" onMouseClicked="#Scroll1" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="67.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="8.0" prefHeight="21.0" prefWidth="10.0" text="1" textFill="WHITE" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="8.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q6" layoutX="122.0" layoutY="151.0" onMouseClicked="#Scroll6" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;">
+               <children>
+                  <Label layoutX="13.0" layoutY="7.0" text="6" textFill="WHITE" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q5" layoutX="29.0" layoutY="151.0" onMouseClicked="#Scroll5" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.topAnchor="151.0">
+               <children>
+                  <Label layoutX="16.0" layoutY="4.0" text="5" textFill="WHITE" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q8" layoutX="317.0" layoutY="151.0" onMouseClicked="#Scroll8" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;">
+               <children>
+                  <Label layoutX="12.0" layoutY="5.0" text="8" textFill="WHITE" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q7" layoutX="221.0" layoutY="151.0" onMouseClicked="#Scroll7" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;">
+               <children>
+                  <Label layoutX="12.0" layoutY="5.0" text="7" textFill="WHITE" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q9" layoutX="123.0" layoutY="227.0" onMouseClicked="#Scroll9" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;">
+               <children>
+                  <Label layoutX="17.0" text="9" textFill="WHITE" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="q10" layoutX="223.0" layoutY="229.0" onMouseClicked="#Scroll10" prefHeight="47.0" prefWidth="47.0" style="-fx-background-color: #e7e7e7; -fx-background-radius: 8;" AnchorPane.bottomAnchor="25.0">
+               <children>
+                  <Label layoutX="9.0" layoutY="8.0" prefHeight="25.0" prefWidth="18.0" text="10" textFill="WHITE" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+            <Line endX="-232.0" endY="-171.0" layoutX="233.0" layoutY="223.0" startX="170.0" startY="-171.0" />
+            <Label layoutX="55.0" layoutY="15.0" prefHeight="25.0" prefWidth="101.0" text="Vos Réponse" textFill="#3f6a84" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="139.0" AnchorPane.topAnchor="18.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="839.0" layoutY="410.0" prefHeight="343.0" prefWidth="403.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 8;">
+         <children>
+            <Label fx:id="StatLabel" layoutX="37.0" layoutY="55.0" prefHeight="211.0" prefWidth="330.0" text="Nous tenons à vous informer des résultats de votre récent examen sur Univers Educatif. Malheureusement, votre performance n'a pas atteint la moyenne requise pour la certification en Module Java." wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutX="125.0" layoutY="21.0" text="Résultat du examen:" textFill="#3f6a84">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Hyperlink fx:id="certif" layoutX="308.0" layoutY="292.0" onMouseClicked="#showCertif" text="Afficher Certification" />
+            <Label fx:id="etat" layoutX="132.0" layoutY="266.0" text="Note:">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Line endX="-232.0" endY="-171.0" layoutX="231.0" layoutY="224.0" startX="170.0" startY="-171.0" />
+            <Label fx:id="note" layoutX="185.0" layoutY="267.0" text="03">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="206.0" layoutY="267.0" text="/10">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="certifAnchorPane" prefHeight="786.0" prefWidth="1366.0" visible="false" />
+      <ImageView fx:id="back" fitHeight="33.0" fitWidth="24.0" layoutX="41.0" layoutY="8.0" onMouseClicked="#backtomain" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/goback.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

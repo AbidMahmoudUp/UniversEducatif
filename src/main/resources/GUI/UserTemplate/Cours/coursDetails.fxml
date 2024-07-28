@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="573.0" prefWidth="1037.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Cours.CourDetailsController">
+   <children>
+      <Label fx:id="nomCour" alignment="CENTER" layoutX="239.0" layoutY="7.0" prefHeight="36.0" prefWidth="478.0" text="Nom" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="pdfCour" layoutX="342.0" layoutY="68.0" prefHeight="23.0" prefWidth="695.0" text="courpdf" />
+      <VBox fx:id="audioPlayer" layoutX="708.0" layoutY="439.0" prefHeight="78.0" prefWidth="208.0" style="-fx-background-color: #fcfcfc; -fx-background-radius: 8;" />
+      <VBox fx:id="videoPlayer" layoutX="42.0" layoutY="108.0" prefHeight="256.0" prefWidth="363.0" style="-fx-background-color: #fcfcfc; -fx-background-radius: 8;" />
+      <ScrollPane layoutX="490.0" layoutY="148.0" style="-fx-background-color: transparent;">
+         <content>
+            <Label fx:id="descriptionCour" prefHeight="155.0" prefWidth="478.0" style="-fx-background-color: white;" text="Label" textFill="#6f6d6d" wrapText="true">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </content>
+      </ScrollPane>
+      <Label layoutX="42.0" layoutY="67.0" text="Pour plus de details consultez notre cours">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="videoText" editable="false" layoutX="42.0" layoutY="371.0" prefHeight="195.0" prefWidth="363.0" style="-fx-background-color: white;" wrapText="true" />
+      <Label layoutX="498.0" layoutY="100.0" text="Description du cours : ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

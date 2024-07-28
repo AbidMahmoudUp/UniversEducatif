@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Dossier.UpdateStateDossierController">
+   <children>
+      <ChoiceBox fx:id="StateDossier" layoutX="25.0" layoutY="75.0" prefWidth="150.0" style="-fx-background-color: #f5f5f5;" />
+      <Label layoutX="32.0" layoutY="14.0" text="Modifier Etat Dossier" textFill="#2c5ae4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="46.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#updateButton" prefHeight="25.0" prefWidth="111.0" styleClass="btn" stylesheets="@../../../CSS/login.css" text="Affecter" textFill="WHITE" />
+   </children>
+</AnchorPane>

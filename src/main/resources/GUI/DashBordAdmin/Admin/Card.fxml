@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="CardAnchorPane" maxHeight="162.0" maxWidth="291.0" minHeight="162.0" minWidth="291.0" prefHeight="162.0" prefWidth="291.0" style="-fx-border-color: &quot;#f5f5f5&quot;; -fx-background-color: &quot;white&quot;; -fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.AdminController.Admin.CardUserController">
+   <children>
+      <Circle fx:id="PictureUser" fill="DODGERBLUE" layoutX="53.0" layoutY="67.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="FullNameUser" layoutX="128.0" layoutY="34.0" text="Mahmoud Abid">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="EmailLabelUser" layoutX="125.0" layoutY="65.0" prefWidth="136.0" text="Mahmoud.abid@esprit.tn" />
+      <Label fx:id="StatusLabel" layoutX="127.0" layoutY="98.0" text="+21626371661" />
+      <Label fx:id="idUser" layoutX="14.0" layoutY="9.0" visible="false" />
+      <ImageView fx:id="stateImage" fitHeight="13.0" fitWidth="13.0" layoutX="65.0" layoutY="92.0" onMouseClicked="#SwitchState" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/activeIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="101.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/user_Unused.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="99.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/email_Unused.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="101.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/call.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="DetailsAnchorPane" layoutX="212.0" layoutY="1.0" prefHeight="74.0" prefWidth="89.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Label layoutX="1.0" layoutY="6.0" text="Supprimer Utlisateur" />
+            <Label layoutX="3.0" layoutY="29.0" text="interdire Utilisateur" />
+            <Label layoutX="2.0" layoutY="52.0" text="Modifier Utilisateur" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="256.0" layoutY="128.0" onMouseClicked="#DeleteUser" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

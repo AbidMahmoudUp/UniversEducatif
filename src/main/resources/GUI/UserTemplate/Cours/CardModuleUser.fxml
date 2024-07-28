@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ParentAnchorCard" maxHeight="345.0" maxWidth="345.0" minHeight="345.0" minWidth="329.0" prefHeight="345.0" prefWidth="329.0" style="-fx-background-color: &quot;#f5f5f5&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.UserController.Module.CardModuleControllerUser">
+    <children>
+        <ImageView fx:id="ImgModulePath" fitHeight="130.0" fitWidth="150.0" layoutX="95.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="84.0" AnchorPane.topAnchor="18.0">
+            <image>
+                <Image url="@../../../Images/LeftImageExam.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="nomModule" layoutX="26.0" layoutY="151.0" prefHeight="35.0" prefWidth="252.0" text="programmation Orientée Objet c++" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="151.0">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="descriptionModule" layoutX="47.0" layoutY="182.0" prefHeight="76.0" prefWidth="263.0" text="En fait, vous allez apprendre à coder de manière plus efficace et organisée. Et pour ça, vous allez apprendre à réfléchir différemment. C’est une approche totalement nouvelle, et je suis sûr que vous allez trouver ça passionnant !" wrapText="true" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="182.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Label>
+        <Label layoutX="96.0" layoutY="264.0" text="Temps Estimé" AnchorPane.bottomAnchor="65.0">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font>
+        </Label>
+        <Label fx:id="tempsM" layoutX="171.0" layoutY="264.0" prefHeight="17.0" prefWidth="27.0" />
+      <AnchorPane layoutX="85.0" layoutY="288.0" onMouseClicked="#voirCours" prefHeight="41.0" prefWidth="200.0" style="-fx-background-color: #1A364B;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0">
+         <children>
+            <Label layoutX="48.0" layoutY="10.0" prefHeight="21.0" prefWidth="72.0" text="Voir Cours" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="189.0" layoutY="264.0" text="Heures">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

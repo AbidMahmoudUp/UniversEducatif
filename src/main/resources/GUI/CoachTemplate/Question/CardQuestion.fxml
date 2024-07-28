@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AnchorParent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="171.0" prefWidth="371.0" style="-fx-background-color: &quot;#FBFDFF&quot;; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxprojectusertask.Controller.CoachController.Examen.QuestionCardController">
+   <children>
+      <Label fx:id="nomCour" layoutX="12.0" layoutY="15.0" text="Question" textFill="#2b3674">
+         <font>
+            <Font name="Segoe UI Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="Question" layoutX="78.0" layoutY="6.0" prefHeight="33.0" prefWidth="258.0" text="Lorem Ipsum is simply dummy text of " textFill="#2b3674" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="tempsC" layoutX="253.0" layoutY="183.0" prefHeight="17.0" />
+      <ImageView fx:id="edit" fitHeight="20.0" fitWidth="20.0" layoutX="342.0" layoutY="15.0" onMouseClicked="#openUpdateQuestion" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="9.0">
+         <image>
+            <Image url="@../../../Images/EditOffre.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete" fitHeight="20.0" fitWidth="20.0" layoutX="127.0" layoutY="142.0" onMouseClicked="#handleDeleteIconClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="224.79999923706055" AnchorPane.topAnchor="142.0">
+         <image>
+            <Image url="@../../../Images/delete.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nomCour2" layoutX="137.0" layoutY="68.0" text="Choix 2:" textFill="#2b3674" AnchorPane.leftAnchor="137.0">
+         <font>
+            <Font name="Segoe UI Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="choix2" layoutX="180.0" layoutY="58.0" prefHeight="33.0" prefWidth="182.0" text="Lorem Ipsum is simply dummy text " wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label fx:id="nomCour21" layoutX="138.0" layoutY="43.0" text="Choix1:" textFill="#2b3674" AnchorPane.leftAnchor="138.0">
+         <font>
+            <Font name="Segoe UI Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="choix1" layoutX="180.0" layoutY="33.0" prefHeight="33.0" prefWidth="238.0" text="Lorem Ipsum is simply dummy text " wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label fx:id="nomCour1" layoutX="137.0" layoutY="91.0" text="Choix 3:" textFill="#2b3674" AnchorPane.leftAnchor="137.0">
+         <font>
+            <Font name="Segoe UI Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="choix3" layoutX="180.0" layoutY="81.0" prefHeight="33.0" prefWidth="182.0" text="Lorem Ipsum is simply dummy text " wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label fx:id="duree" layoutX="338.0" layoutY="141.0" prefHeight="20.0" prefWidth="20.0" text="20s" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="14.0" />
+      <Label fx:id="nomCour211" layoutX="137.0" layoutY="114.0" text="Choix Correcte :" textFill="#2b3674" AnchorPane.leftAnchor="137.0">
+         <font>
+            <Font name="Segoe UI Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="choixcorrecte" layoutX="212.0" layoutY="104.0" prefHeight="33.0" prefWidth="215.0" text="Lorem Ipsum is simply dummy text " wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <ImageView fitHeight="83.0" fitWidth="117.0" layoutX="29.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="44.0">
+         <image>
+            <Image url="@../../../Images/question.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

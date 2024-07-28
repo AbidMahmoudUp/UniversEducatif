@@ -1,0 +1,4 @@
+1.name = Systeme
+
+1: Merci pour appliquer l'offre !
+1: Veuillez attender jusqu'a tu as reçu un email !
