@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+</head>
+<body>
+    <link rel="stylesheet" href="{{asset('css/styleQuiz.css')}}">
+<div class="container">
+ <img src="{{asset("img/logooo.png")}}" alt="Header Image" class="header-image">
+    <div class="quiz-container">
+<div class="timer-container">
+        <div class="timer-circle" id="timer-circle"></div>
+        <div class="timer" id="timer"></div>
+    </div>
+    <h1>{{ exam.module }}</h1>
+    <div id="question-container"></div>
+    <div class="btn-container">
+        <button id="next">Next</button>
+        <button id="submit" style="display: none;">Submit Answers</button>
+    </div>
+    <div id="current-question"></div>
+    <div id="responses" class="response" style="display: none;">
+        <h2>Your Responses:</h2>
+        <ul id="response-list"></ul>
+    </div>
+    <div id="question-numbers"></div>
+    <div id="score" class="score" style="display: none;"></div>
+    <!-- Hidden form for score submission -->
+    <form id="score-form" action="{{ path('app_notes_new') }}" method="post" style="display: none;">
+        <input type="hidden" name="userId" id="user-id" value="{{profile.getIdUser().getId()}}"> 
+        <input type="hidden" name="examId" id="exam-id" value="{{exam.getId()}}">
+        <input type="hidden" name="_token" value="{{ csrf_token('add_note') }}">
+        <input type="hidden" name="score" id="user-score">
+        <button type="submit" id="submit-score-btn">Submit Score</button>
+    </form>    </div>
+</div>
+
+<script>
+    const questions = [
+        {% for question in questions %}
+        {
+            question: "{{ question.question }}",
+            choices: ["{{ question.choix1 }}", "{{ question.choix2 }}", "{{ question.choix3 }}"],
+            correctChoice: "{{ question.choixcorrect }}",
+            duration: {{ question.duree }}
+        },
+        {% endfor %}
+    ];
+
+
+    let currentQuestion = 0;
+    const totalQuestions = 10;
+    const questionContainer = document.getElementById('question-container');
+    const nextButton = document.getElementById('next');
+    const submitButton = document.getElementById('submit');
+    const currentQuestionDisplay = document.getElementById('current-question');
+    const timerDisplay = document.getElementById('timer');
+    const timerCircle = document.getElementById('timer-circle');
+    const responsesContainer = document.getElementById('responses');
+    const responseList = document.getElementById('response-list');
+    const questionNumbersContainer = document.getElementById('question-numbers');
+    const scoreDisplay = document.getElementById('score');
+    let answers = Array(totalQuestions).fill(""); // Initialize answers array
+    let timerInterval; // Variable to hold interval reference
+
+    function showQuestion(questionNumber) {
+        questionContainer.innerHTML = ""; // Clear previous question
+        const questionData = questions[questionNumber];
+        currentQuestionDisplay.textContent = `Question ${questionNumber + 1} of ${totalQuestions}`;
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question');
+        questionDiv.innerHTML = `
+            <h3>${questionData.question}</h3>
+            <div class="options">
+                ${questionData.choices.map((choice, index) => `
+                    <div class="option" onclick="selectOption(${questionNumber}, ${index})">${choice}</div>
+                `).join('')}
+            </div>
+        `;
+        questionContainer.appendChild(questionDiv);
+        if (timerInterval) clearInterval(timerInterval); // Stop previous timer
+        startTimer(questionData.duration, timerDisplay);
+        if (questionNumber === totalQuestions - 1) {
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+        } else {
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+        }
+        updateQuestionNumbers(currentQuestion);
+    }
+
+    function selectOption(questionNumber, index) {
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => option.classList.remove('selected'));
+        options[index].classList.add('selected');
+        answers[questionNumber] = questions[questionNumber].choices[index];
+    }
+
+    function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        timerInterval = setInterval(function () {
+            minutes = Math.floor(timer / 60);
+            seconds = timer % 60;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = minutes + ":" + seconds;
+            if (--timer < 0) {
+                clearInterval(timerInterval);
+                alert("Time's up!");
+                showNextQuestion();
+            }
+            updateTimerCircle(timer, duration); // Update timer circle
+        }, 1000);
+    }
+
+    function updateTimerCircle(timer, duration) {
+        const percentage = (timer / duration) * 100;
+        timerCircle.style.borderColor = `hsl(${percentage * 1.2}, 100%, 50%)`; // Change color dynamically based on percentage
+    }
+
+    function showNextQuestion() {
+        if (currentQuestion < totalQuestions - 1) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+            showResponse();
+        }
+    }
+
+    function showResponse() {
+        responseList.innerHTML = '';
+        for (let i = 0; i < currentQuestion; i++) {
+            const listItem = document.createElement('li');
+            const correctAnswerIndex = questions[i].choices.indexOf(questions[i].correctChoice);
+            const userAnswerIndex = questions[i].choices.indexOf(answers[i]);
+            listItem.textContent = `Question ${i + 1}: ${answers[i]}`;
+            if (correctAnswerIndex === userAnswerIndex) {
+                listItem.classList.add('correct-answer');
+            } else {
+                listItem.classList.add('wrong-answer');
+            }
+            responseList.appendChild(listItem);
+        }
+    }
+
+    showQuestion(currentQuestion);
+
+    nextButton.addEventListener('click', function() {
+        showNextQuestion();
+    });
+
+    submitButton.addEventListener('click', function() {
+
+        let score = calculateScore();
+        scoreDisplay.textContent = `Your Score: ${score}/${totalQuestions}`;
+        document.getElementById('user-score').value = score;
+        const formData = new FormData(document.getElementById('score-form'));
+        fetch('{{ path('app_notes_new') }}', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add note');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+
+            });
+            let questionsParam = encodeURIComponent(JSON.stringify(questions));
+        let answersParam = encodeURIComponent(JSON.stringify(answers));
+        let scoreParam = encodeURIComponent(JSON.stringify(score));
+        window.location.href = "{{ path('results_page') }}?answers=" + answersParam +"&score=" + scoreParam;
+    });
+
+
+    function calculateScore() {
+        let score = 0;
+        for (let i = 0; i < totalQuestions; i++) {
+            const correctAnswerIndex = questions[i].choices.indexOf(questions[i].correctChoice);
+            const userAnswerIndex = questions[i].choices.indexOf(answers[i]);
+            if (correctAnswerIndex === userAnswerIndex) {
+                score++;
+            }
+        }
+        return score;
+    }
+
+    function updateQuestionNumbers(activeQuestionIndex) {
+        questionNumbersContainer.innerHTML = '';
+        for (let i = 0; i < totalQuestions; i++) {
+            const questionNumberDiv = document.createElement('div');
+            questionNumberDiv.classList.add('question-number');
+            if (i <= activeQuestionIndex) {
+                questionNumberDiv.classList.add('passed');
+            }
+            questionNumberDiv.textContent = i + 1;
+            questionNumbersContainer.appendChild(questionNumberDiv);
+        }
+    }
+
+</script>
+
+</body>
+</html>

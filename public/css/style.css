@@ -1,0 +1,769 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+
+}
+.container{ /* this was for the postion of all the element in the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #081b29;
+}
+.wrapper{
+    position: relative;
+    width:55%;
+    height: 69%;
+    background-color: transparent;
+    border: 2px solid #0ef;
+    box-shadow: 0 0 25px #0ef;
+    overflow: hidden;
+}
+.wrapper .form-box{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+}
+.wrapper .form-box.login{
+    left: 0;
+    padding: 0px 60px 0 40px;
+}
+.wrapper .form-box.login .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+.wrapper.active .form-box.login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+.wrapper .form-box.register{
+    right: 0;
+    padding: 0px 40px 0 60px;
+    pointer-events: none;
+}
+
+.wrapper .form-box.password{
+    right: 0;
+    padding: 0px 40px 0 60px;
+    pointer-events: none;
+}
+
+
+.wrapper .form-box.update-password{
+    right: 0;
+    padding: 0px 40px 0 60px;
+    pointer-events: none;
+}
+
+
+
+.wrapper.active .form-box.register{
+   pointer-events: auto;
+
+}
+.wrapper .form-box.register .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .form-box.register .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+.wrapper.login-link1.form-box.password{
+   pointer-events: auto;
+
+}
+
+.wrapper.login-link2.form-box.confirme-code{
+    pointer-events: auto;
+ 
+ }
+
+
+ .wrapper.login-link3.form-box.update-password{
+    pointer-events: auto;
+ 
+ }
+
+
+.wrapper .form-box.register .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.login-link1 .form-box.password .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+
+.wrapper.login-link2 .form-box.confirme-code .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+.wrapper.login-link3 .form-box.update-password .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+.form-box h2{
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+
+}
+.form-box .input-box{
+position: relative;
+width: 100%;
+height: 50px;
+margin: 25px 0;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background:transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    padding-right: 23px;
+    font-weight: 500;
+    border-bottom: 2px solid #fff;
+    transition: .5s;
+}
+.input-box input:focus,
+.input-box input:valid{
+    border-bottom-color: #0ef;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+    color: #0ef;
+}
+.input-box i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    transition: .5s;
+}
+.input-box input:focus~i,
+.input-box input:valid~i{
+    
+    color: #0ef;
+}
+.btn{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #0ef;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 1;
+    overflow: hidden;
+}
+.btn::before{
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(#081b29 ,#0ef , #081b29 , #0ef );
+    z-index: -1;
+    transition: .5s;
+}
+.btn:hover::before{
+top: 0;
+}
+.form-box .logreg-link{
+font-size: 14px;
+color: #fff;
+text-align: center;
+margin: 20px 0 10px;
+}
+.logreg-link p a{
+    font-weight: 600;
+    text-decoration: none;
+    color: #0ef;
+}
+.logreg-link p a:hover{
+    text-decoration: underline;
+}
+.wrapper .info-text{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wrapper .info-text.login{
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+.wrapper.active .info-text.login{
+    pointer-events: auto;
+}
+.wrapper .info-text.login .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+
+}
+.wrapper.active .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+.wrapper .info-text.register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+}
+.wrapper.active .info-text.register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: auto;
+}
+.wrapper .info-text.register .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+
+}
+
+.wrapper.active .info-text.register .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+
+}
+.info-text h2{
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+.info-text p{
+    font-size: 12px;
+    color: #fff;
+}
+
+.wrapper .bg-animated{
+    position: absolute;
+    top: -4;
+    right: 0;
+    width: 850px;
+    height: 600px;
+    border-bottom: 3px solid #0ef;
+    background: linear-gradient(45deg , #081b29,#0ef);
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition: 1.5s ease;
+    transition-delay: 1.6s;
+}
+.wrapper.active .bg-animated{
+    transform: rotate(0) skewY(0);
+    transition-delay: .5s ;
+}
+
+.wrapper .bg-animated2{
+    position: absolute;
+    top: 100%;
+    left: 250px;
+    width: 850px;
+    height: 700px;
+    border-top: 3px solid #0ef;
+    background: #081b29;
+    /* transform: rotate(-11deg) skewY(-41deg); */
+    transform: rotate(0) skewY(0);
+    transform-origin: bottom left;
+    transition: 1.5s ease;
+    transition-delay: .5s;
+}
+.wrapper.active .bg-animated2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+
+}
+
+
+
+
+
+.wrapper .form-box.password .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.forget .form-box.login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+/*first update*/
+.wrapper.sending .form-box.password{
+    right: 0;
+    padding: 0px 40px 0 60px;
+}
+
+.wrapper.forget .form-box.password{
+    pointer-events: all;
+ 
+ }
+
+
+ .wrapper.forget .form-box.password .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+
+/*---------------------------------*/
+.wrapper .form-box.confirme-code .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.sending .form-box.login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper.sending .form-box.password .animation{
+  
+    opacity: 0;
+    filter: blur(10px);
+  
+}
+
+.wrapper .form-box.confirme-code{
+    right: 0;
+    padding: 0px 40px 0 60px;
+    pointer-events: none;
+}
+
+.wrapper.sending .form-box.confirme-code{
+    pointer-events: all;
+ 
+ }
+
+
+ .wrapper.sending .form-box.confirme-code .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+.wrapper.sending .form-box.password{
+    right: 0;
+    padding: 0px 40px 0 60px;
+}
+.wrapper.sending .form-box.password .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+/*---------------------------------------*/
+/*new new*/
+/*---------------------------------------*/
+.wrapper .form-box.update-password .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.sending .form-box.update-password .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+
+
+
+.wrapper.update-password .form-box.update-password{
+    pointer-events: auto;
+ 
+ }
+
+
+ .wrapper.update-password .form-box.update-password .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s *var(--i));
+}
+
+
+
+.wrapper.update-password .form-box.confirme-code .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.update-password .form-box.login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper.update-password .form-box.password .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+/*---------------------------------------*/
+.wrapper.forget .info-text.login{
+    pointer-events: none;
+}
+
+
+.wrapper.forget .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+
+.wrapper.forget .info-text.register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: all;
+}
+
+
+
+.wrapper.forget .info-text.forgetBanner .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+
+}
+
+
+.wrapper.sending .info-text.login{
+    pointer-events: none;
+}
+
+
+.wrapper.sending .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+
+.wrapper.sending .info-text.forgetBanner .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+
+}
+
+
+.wrapper.update-password .info-text.login{
+    pointer-events: none;
+}
+
+
+.wrapper.update-password .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+
+.wrapper.update-password .info-text.forgetBanner .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+
+}
+
+
+
+
+
+
+.wrapper.forget .bg-animated{
+    transform: rotate(0) skewY(0);
+    transition-delay: .5s ;
+
+}
+
+
+.wrapper.forget .bg-animated2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+
+}
+
+
+.wrapper.sending .bg-animated{
+    transform: rotate(0) skewY(0);
+    transition-delay: .5s ;
+
+}
+
+
+.wrapper.sending .bg-animated2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+
+}
+
+
+.wrapper.update-password .bg-animated{
+    transform: rotate(0) skewY(0);
+    transition-delay: .5s ;
+
+}
+
+
+.wrapper.update-password .bg-animated2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+
+}
+
+
+
+
+
+@media screen and (max-width: 992px) {
+    .wrapper {
+        width: 80%; /* Reduce the width of the wrapper */
+    }
+
+    .wrapper .form-box {
+        width: 100%; /* Make the form box full width */
+    }
+
+    .info-text.login {
+        display: none; /* Hide the info text for login */
+    }
+
+    .info-text.register {
+        display: none; /* Hide the info text for register */
+    }
+
+    .wrapper .bg-animated,
+    .wrapper .bg-animated2 {
+        display: none; /* Hide the animated background elements */
+    }
+
+    .form-box .input-box label {
+        font-size: 14px; /* Reduce label font size for smaller screens */
+    }
+
+    .input-box input {
+        font-size: 14px; /* Reduce input font size for smaller screens */
+    }
+
+    /* Adjust sign-up and sign-in form content */
+    .form-box.register,
+    .form-box.login,
+    .form-box.confirme-code,
+    .form-box.password,
+    .form-box.update-password {
+        padding: 20px; /* Add padding to the form box */
+    }
+
+    .form-box h2 {
+        font-size: 24px; /* Reduce heading font size */
+    }
+
+    .form-box .input-box {
+        margin: 15px 0; /* Reduce margin between input boxes */
+    }
+
+    .form-box .logreg-link {
+        margin-top: 10px; /* Reduce margin above the link */
+    }
+
+    .logreg-link p a {
+        font-size: 12px; /* Reduce font size of the link */
+    }
+}
+.google-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it circular */
+    border:1px solid #fff; /* Background color for the circle */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+}
+
+.google-icon i {
+    color: #fff;   /* Set icon color to white */
+    font-size: 14px; /* Adjust size as needed */
+}
+
+Copy code
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    flex-grow: 1;
+}
+
+.error-message {
+    color: red; /* Error message color */
+    font-size: 12px; /* Error message font size */
+    display: none; /* Initially hide the error message */
+}
+
+.input-box.error .error-message {
+    display: block; /* Show error message when there is an error */
+}
+
+.validator-message{
+    color: red;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.wrapper.forget .info-text.forgetBanner .animation{
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+
+}
+.wrapper .info-text.forgetBanner .animation{
+    transform: translateX(0);
+    opacity: 0;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+
+}
+.wrapper.forget .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+.wrapper.forget .info-text.login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+.wrapper.forget .info-text.register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: auto;
+}
+
+.wrapper .info-text.forgetBanner{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+}
+
+/* .wrapper.forget .info-text.forgetBanner{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: auto;
+    display: flex;
+} */

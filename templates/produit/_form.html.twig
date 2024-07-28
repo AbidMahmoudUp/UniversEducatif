@@ -1,0 +1,15 @@
+{# templates/produit/_form.html.twig #}
+{% block MainContent %}
+
+{{ form_start(form) }}
+<table border="0" style="width: 100%;">
+    {% for field in form %}
+    <tr>
+        <td style="padding: 10px; vertical-align: top;">{{ form_label(field) }}</td>
+        <td style="padding: 10px;">{{ form_widget(field) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Panier</title>
+</head>
+<body>
+   <div class="container mt-3">
+    <h2>Votre Panier</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit ID</th> <!-- Adjusted to show product ID -->
+                <th>Prix Unité</th>
+                <th>Quantité</th>
+                <th>Sous-total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if cart|length > 0 %}
+            {% for produitId, item in cart %}
+            <tr>
+                <td>{{ produitId }}</td> <!-- Displaying Product ID -->
+                <td>{{ item.prixInit }} €</td>
+                <td>
+                    
+                    {{ item.qte }}
+                </td>
+                <td>{{ (item.prixInit * item.qte) }} €</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">Votre panier est vide</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+        <h4>Total: €{{total}} </h4> <!-- Assuming 'total' is passed from the controller -->
+    </div>
+</div>
+
+</body>
+</html>

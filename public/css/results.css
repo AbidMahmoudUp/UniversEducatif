@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center; /* Center content horizontally */
+}
+
+h1, h2 {
+    color: #343a40;
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.question-text {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.answer {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.answer:hover {
+    background-color: #f0f0f0;
+}
+
+.correct-answer {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.wrong-answer {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.navigation-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 999;
+}
+
+.outer-square {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content; /* Adjust this value to control the size of the larger square */
+    border: 2px solid black;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.inner-square {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 5px; /* Adjust this value to control the spacing between small squares */
+    transition: background-color 0.3s ease;
+}
+
+.inner-square:hover {
+    background-color: #f0f0f0;
+}
+
+.correct {
+    background-color: #d4edda;
+}
+
+.wrong {
+    background-color: #f8d7da;
+}
+
+.correct-answer-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #6c757d; /* Adjust color as needed */
+}
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

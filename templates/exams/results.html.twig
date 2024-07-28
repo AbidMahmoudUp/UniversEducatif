@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{asset('css/results.css')}}">
+    <title>Quiz Answers</title>
+</head>
+<body>
+
+<h1>Quiz Answers</h1>
+
+<h2>Your Score: {{score}}</h2>
+
+<div class="navigation-box" id="navigationBox"></div>
+
+<div id="answers-container"></div>
+
+<a href="{{ path('app_exams_index') }}" class="btn btn-primary">Back To Exams</a>
+<button class="btn btn-primary">Print as PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script>
+    const questions = [
+        {% for question in questions %}
+        {
+            question: "{{ question.question }}",
+            choices: ["{{ question.choix1 }}", "{{ question.choix2 }}", "{{ question.choix3 }}"],
+            correctChoice: "{{ question.choixcorrect }}",
+            duration: {{ question.duree }}
+        },
+        {% endfor %}
+    ];
+    const answers = {{ answers|raw }};
+
+    // Function to display answers
+    function displayAnswers() {
+        const answersContainer = document.getElementById('answers-container');
+        for (let i = 0; i < 10; i++) {
+            const questionData = questions[i];
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            const questionText = document.createElement('p');
+            questionText.classList.add('question-text');
+            questionText.textContent = `Question ${i + 1}: ${questionData.question}`;
+            questionDiv.appendChild(questionText);
+            for (let j = 0; j < questionData.choices.length; j++) {
+                const choice = questionData.choices[j];
+                const answerDiv = document.createElement('div');
+                answerDiv.classList.add('answer');
+                if (choice === questionData.correctChoice && choice === answers[i]) {
+                    // Correct answer
+                    answerDiv.classList.add('correct-answer');
+                } else if (choice !== questionData.correctChoice && choice === answers[i]) {
+                    // Incorrect answer
+                    answerDiv.classList.add('wrong-answer');
+                }
+                answerDiv.textContent = choice;
+                questionDiv.appendChild(answerDiv);
+            }
+            // Add the correct answer text
+            const correctAnswerText = document.createElement('p');
+            correctAnswerText.classList.add('correct-answer-text');
+            correctAnswerText.textContent = `Correct Answer: ${questionData.correctChoice}`;
+            questionDiv.appendChild(correctAnswerText);
+            answersContainer.appendChild(questionDiv);
+        }
+    }
+
+    // Call the function to display answers when the page loads
+    displayAnswers();
+
+    // Function to handle navigation
+    function scrollToQuestion(questionIndex) {
+        const questionElement = document.querySelectorAll('.question')[questionIndex];
+        questionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Function to create navigation box
+    function createNavigationBox() {
+        const navigationBox = document.getElementById('navigationBox');
+        const outerSquare = document.createElement('div');
+        outerSquare.classList.add('outer-square');
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        for (let i = 0; i < numbers.length; i++) {
+            const innerSquare = document.createElement('div');
+            innerSquare.classList.add('inner-square');
+            innerSquare.textContent = numbers[i];
+            if (answers[i] === questions[i].correctChoice) {
+                // Correct answer
+                innerSquare.classList.add('correct');
+            } else {
+                // Incorrect answer
+                innerSquare.classList.add('wrong');
+            }
+            innerSquare.addEventListener('click', () => {
+                scrollToQuestion(i);
+            });
+            outerSquare.appendChild(innerSquare);
+        }
+        navigationBox.appendChild(outerSquare);
+    }
+
+    // Call the function to create navigation box
+    createNavigationBox();
+    // Function to send data to the controller and generate PDF
+    function generatePDF() {
+        const requestData = {
+            score: {{ score }},
+            questions: {{ questions|json_encode|raw }},
+            answers: {{ answers|json_encode|raw }}
+        };
+
+        fetch('{{ path('generate_pdf') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('An error occurred while generating the PDF');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a link element to download the PDF
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'quiz_answers.pdf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Call the function to generate PDF when the "Print as PDF" button is clicked
+    document.querySelector('button.btn.btn-primary').addEventListener('click', generatePDF);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+{% for dossier in dossiers %}
+idUser:{{dossier.idUser.getId()}}|idOffre:{{dossier.idOffre.getId()}}|status:{{dossier.status}};
+{% else %}
+NOT FOUND
+{% endfor %}

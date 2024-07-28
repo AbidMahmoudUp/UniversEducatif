@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Societe{% endblock %}
+
+{% block MainContent %}
+    <h1>Create new Societe</h1>
+
+    {{ include('societe/_form.html.twig') }}
+
+    <a href="{{ path('app_societe') }}">back to list</a>
+{% endblock %}

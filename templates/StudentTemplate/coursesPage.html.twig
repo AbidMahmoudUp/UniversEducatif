@@ -1,0 +1,48 @@
+{% extends "baseStudent.html.twig" %}
+
+{% block MainContent %}
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Cours pour le module "{{ module.nom }}"</h1>
+                        <p class="mb-0">Description du module : {{ module.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Page Title -->
+
+    <!-- Liste des cours pour le module -->
+    <section id="courses-list" class="section courses-list">
+        <div class="container">
+            <div class="row">
+                {% for course in cours %}
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in"
+                    data-aos-delay="100">
+                    <div class="course-item">
+                        <a href="{{ path('app_cours_front', {'id': course.id}) }}" style="text-decoration: none;">
+                            <div class="course-content">
+                                <h3>{{ course.nom }}</h3>
+                                <p class="description">{{ course.description }}</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">
+                                    <div class="trainer-profile d-flex align-items-center">
+                                        <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
+                                        <a href="" class="trainer-link">Antonio</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div> <!-- End Course Item-->
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- /Cours List Section -->
+
+</main>
+{% endblock %}

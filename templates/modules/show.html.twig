@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modules{% endblock %}
+
+{%block MainContent %}
+    <h1>Modules</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ module.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ module.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ module.description }}</td>
+            </tr>
+            <tr>
+                <th>ImgPath</th>
+                 <td>
+                    {% if module.imgPath %}
+                        <img src="{{ asset('C:\xampp\htdocs\img' ~ module.imgPath) }}" alt="Image">
+                    {% else %}
+                        Pas d'image disponible
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>TempsT</th>
+                <td>{{ module.tempsT }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_modules_index') }}">back to list</a>
+
+    <a href="{{ path('app_modules_edit', {'id': module.id}) }}">edit</a>
+
+    {{ include('modules/_delete_form.html.twig') }}
+{% endblock %}

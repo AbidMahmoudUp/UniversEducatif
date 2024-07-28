@@ -1,0 +1,45 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Questions{% endblock %}
+
+{% block MainContent %}
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}"></style>
+
+    <h1>Questions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ question.id }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>{{ question.question }}</td>
+            </tr>
+            <tr>
+                <th>Choix1</th>
+                <td>{{ question.choix1 }}</td>
+            </tr>
+            <tr>
+                <th>Choix2</th>
+                <td>{{ question.choix2 }}</td>
+            </tr>
+            <tr>
+                <th>Choix3</th>
+                <td>{{ question.choix3 }}</td>
+            </tr>
+            <tr>
+                <th>Choixcorrect</th>
+                <td>{{ question.choixcorrect }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ question.duree }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_questions_index') }}"class="btn btn-primary">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre index{% endblock %}
+
+{% block MainContent %}
+    <h1>Livre index</h1>
+    <input type="text" name="text" id="search-input" placeholder="Search " class="input">
+{# Ajouter le formulaire de tri #}
+<form id="sort-form" method="GET">
+    <select name="sort">
+        <option value="idd_asc">Id (ascendant)</option>
+        <option value="idd_desc">Id (descendant)</option>
+        <option value="type_asc">Type (ascendant)</option>
+        <option value="type_desc">Type (descendant)</option>
+        <option value="titre_asc">Titre (ascendant)</option>
+        <option value="titre_desc">Titre (descendant)</option>
+        <option value="auteur_asc">Auteur (ascendant)</option>
+        <option value="auteur_desc">Auteur (descendant)</option>
+        <option value="langue_asc">Langue (ascendant)</option>
+        <option value="langue_desc">Langue (descendant)</option>
+    </select>
+    <button type="submit">Trier</button>
+</form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Langue</th>
+                <th>Bibliotheque</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr class ="livre-row">
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.type }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.auteur }}</td>
+                <td>{{ livre.langue }}</td>
+                <td>{{ livre.bibliotheque }}</td>
+                <td>
+                    <a href="{{ path('app_livre_show', {'id': livre.id}) }}">show</a>
+                    <a href="{{ path('app_livre_edit', {'id': livre.id}) }}">edit</a>
+                       <a href="{{ path('app_livre_pdf', {'id': livre.id}) }}" class="btn btn-info">Télécharger PDF</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_livre_new') }}">Create new</a>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Script pour la recherche
+            $('#search-input').on('input', function() {
+                
+                const searchTerm = $(this).val().toLowerCase();
+                $('.livre-row').each(function() {
+                    const titre = $(this).find('td:nth-child(3)').text().toLowerCase();
+                    if (titre.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+            // Script pour le tri
+            $('#sort-form').on('submit', function(event) {
+                event.preventDefault(); // Empêcher le formulaire de soumettre de manière standard
+
+                const formData = $(this).serialize(); // Sérialiser les données du formulaire
+
+                // Effectuer une requête AJAX pour récupérer les données triées
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ path("app_livre_index") }}', // Chemin de l'action du contrôleur Symfony
+                    data: formData, // Données du formulaire sérialisées
+                    success: function(response) {
+                        // Mettre à jour le contenu de la table avec les données triées
+                        $('.table tbody').html($(response).find('.table tbody').html());
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error); // Gérer les erreurs éventuelles
+                    }
+                });
+            });
+        });
+    </script>
+
+    
+
+    
+{% endblock %}

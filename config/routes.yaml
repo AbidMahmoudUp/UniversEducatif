@@ -1,0 +1,31 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_Admin_dashbord:
+    path: '/dashbordAdmin'
+    controller: App\Controller\UserController::switchToDashBord
+    methods: [GET, POST]
+
+SignInSignUp:
+    path: '/SignInSignUp'
+    controller: App\Controller\UserController::SignInSignUp
+    methods: [GET, POST]
+
+app_user_welcomePage:
+     path: '/universEducatif'
+     controller: App\Controller\UserController::switchToWelcomePage
+     methods: [GET, POST]
+
+app_Admin_Profile:
+    path: '/dashbordAdmin/profileAdmin'
+    controller: App\Controller\AdminController::switchToProfile
+    methods: [GET, POST]
+
+app_user_ajax:
+    path: '/ajax'
+    controller: App\Controller\UserController::ajaxTest
+    methods: [GET, POST]
+app_user_password:
+    path: '/ajaxPass'
+    controller: App\Controller\UserController::modifierMotDePasse
+    methods: [GET, POST]

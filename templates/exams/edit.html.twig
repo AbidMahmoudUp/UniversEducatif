@@ -1,0 +1,13 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Edit Exams{% endblock %}
+
+{% block MainContent %}
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}"></style>
+    <h1>Edit Exams</h1>
+
+    {{ include('exams/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_exam_index') }}"class="btn btn-primary">back to list</a>
+
+{% endblock %}

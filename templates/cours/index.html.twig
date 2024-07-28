@@ -1,0 +1,125 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Cours {% endblock %}
+
+{% block MainContent %}
+    <h1>Cours </h1>
+    <label for="searchInput">Rechercher  :</label>
+    <input type="text" id="searchInput" placeholder="Rechercher...">
+    <br><br>
+    <div>
+        <label for="sortBy">Trier par :</label>
+        <select id="sortBy">
+            <option value="nom">Nom</option>
+            <option value="tempsC">Temps C</option>
+        </select>
+        <label for="sortDirection">Direction du tri :</label>
+        <input type="radio" id="sortAsc" name="sortDirection" value="asc" checked>
+        <label for="sortAsc">Ascendant</label>
+        <input type="radio" id="sortDesc" name="sortDirection" value="desc">
+        <label for="sortDesc">Descendant</label>
+        <button id="sortButton" style="width: 200px">Trier</button>
+    </div>
+    <br><br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>FichierPath</th>
+                <th>TempsC</th>
+                <th>AudioPath</th>
+                <th>VideoPath</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody id="coursTableBody">
+            {% for cour in cours %}
+                <tr>
+                    <td>{{ cour.nom }}</td>
+                    <td>{{ cour.description }}</td>
+                    <td>
+                        {% if cour.fichierPath %}
+                            {% set filename = cour.fichierPath|split('/')|last|split('.')|first %}
+                            <a href="{{ path('app_pdf_download', {'filename': filename}) }}" target="_blank">{{filename}}</a>
+                        {% else %}
+                            Aucun fichier PDF disponible
+                        {% endif %}
+                    </td>
+                    <td>{{ cour.tempsC }}</td>
+                    <td>{{ cour.audioPath }}</td>
+                    <td>{{ cour.videoPath }}</td>
+                    <td>
+                        <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
+                        <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cours_new') }}">Create new</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#searchInput').on('input', searchCours);
+
+            $('#sortButton').on('click', function(){
+                var sortBy = $('#sortBy').val();
+                var sortDirection = $('input[name="sortDirection"]:checked').val();
+                sortCours(sortBy, sortDirection);
+            });
+
+            function searchCours() {
+                var query = $('#searchInput').val();
+                var sortBy = $('#sortBy').val(); // Récupérer la valeur de tri actuelle
+                var sortDirection = $('input[name="sortDirection"]:checked').val(); // Récupérer la direction de tri actuelle
+                $.ajax({
+                    url: '/cours/search',
+                    type: 'GET',
+                    data: { input: query },
+                    success: function(response) {
+                        updateCoursTable(response);
+                    }
+                });
+            }
+
+            function sortCours(sortBy, sortDirection) {
+                var query = $('#searchInput').val();
+                $.ajax({
+                    url: '/cours/sort/' + sortBy + '/' + sortDirection,
+                    type: 'GET',
+                    success: function(response) {
+                        updateCoursTable(response);
+                    },
+                    data: { input: query }
+                });
+            }
+
+            function updateCoursTable(cours) {
+                var tableBody = $('#coursTableBody');
+                tableBody.empty();
+
+                $.each(cours, function(index, cour){
+                    var row = $('<tr>');
+                    row.append($('<td>').text(cour.nom));
+                    row.append($('<td>').text(cour.description));
+                    row.append($('<td>').text(cour.fichierPath));
+                    row.append($('<td>').text(cour.tempsC));
+                    row.append($('<td>').text(cour.audioPath));
+                    row.append($('<td>').text(cour.videoPath));
+                    row.append($('<td>').append($('<a>').attr('href', '/cours/' + cour.id).text('show')));
+                    row.append($('<td>').append($('<a>').attr('href', '/cours/' + cour.id + '/edit').text('edit')));
+
+                    tableBody.append(row);
+                });
+            }
+        });
+    </script>
+{% endblock %}

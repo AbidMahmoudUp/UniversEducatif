@@ -1,0 +1,46 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{%block MainContent %}
+    <h1>Cours</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cour.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ cour.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cour.description }}</td>
+            </tr>
+            <tr>
+                <th>FichierPath</th>
+                <td>{{ cour.fichierPath }}</td>
+            </tr>
+            <tr>
+                <th>TempsC</th>
+                <td>{{ cour.tempsC }}</td>
+            </tr>
+            <tr>
+                <th>AudioPath</th>
+                <td>{{ cour.audioPath }}</td>
+            </tr>
+            <tr>
+                <th>VideoPath</th>
+                <td>{{ cour.videoPath }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cours_index') }}">back to list</a>
+
+    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
+
+    {{ include('cours/_delete_form.html.twig') }}
+{% endblock %}

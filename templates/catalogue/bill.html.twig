@@ -1,0 +1,144 @@
+
+Daly
+Daly Ben Romdhane
+{# templates/catalogue/bill.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: #fff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .invoice-header {
+            background-color: #0073e6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .invoice-header h1 {
+            margin: 0;
+        }
+        .company-info, .billing-info {
+            width: 48%;
+            float: left;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 10px 1%;
+        }
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #0073e6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        .totals {
+            text-align: right;
+            padding-right: 20px;
+        }
+        .totals div {
+            margin-bottom: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        .signature {
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .signature-space {
+            display: inline-block;
+            width: 200px;
+            border-top: 1px solid #000;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100px;
+            height: auto;
+            padding-bottom: 20px;
+        }
+        .product-image {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <h1>INVOICE</h1>
+        <div>Invoice Number: 11</div>
+        <div>Date: 10/10/2010</div>
+    </div>
+    <div class="company-info">
+        <div class="info-title">Bill To:</div>
+        <div>UNIVEREDUCATIF SHOP</div>
+        <div>17 Rue Moez Ibn Badis, Kairouan</div>
+        <div>Phone: +216 28 621 681</div>
+    </div>
+    <div class="billing-info">
+        <div class="info-title">Ship To:</div>
+        <div>Ben Romdhane Daly</div>
+        <div>375 RUE ILYA ABU MADHI 4500</div>
+        <div>Phone: 25 255 255</div>
+    </div>
+    <div style="clear: both;"></div>
+    <table>
+        <thead>
+            <tr>
+        
+
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for productId, details in cart %}
+            <tr>
+                <td>{{ productId }}</td>
+        
+    
+            <td>{{ details.qte }}</td>
+            <td>{{ details.prixInit }}</td>
+            <td>{{ details.qte * details.prixInit }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="totals">
+    <div><strong>Subtotal:</strong> 1000</div>
+    <div><strong>Tax (15%):</strong> 1555</div>
+    <div><strong>Total:</strong> 2100</div>
+</div>
+<div class="footer">
+    <div>Thank you for your business!</div>
+    <div>Please contact us with any questions concerning this invoice.</div>
+</div>
+<div class="signature">
+    <div>Company Signature:</div>
+    <span class="signature-space"></span>
+</div>
+</body>
+</html>

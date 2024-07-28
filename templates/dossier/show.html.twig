@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossier{% endblock %}
+
+{% block MainContent %}
+    <h1>Dossier</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Status</th>
+                <td>{{ dossier.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_dossier_index') }}">back to list</a>
+
+    <a href="{{ path('app_dossier_edit', {'idUser': dossier.idUser}) }}">edit</a>
+
+    {{ include('dossier/_delete_form.html.twig') }}
+{% endblock %}

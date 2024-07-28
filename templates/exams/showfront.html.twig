@@ -1,0 +1,78 @@
+{% extends "baseStudent.html.twig" %}
+
+{% block MainContent %}
+	<!-- Page Title -->
+	<div class="page-title" data-aos="fade">
+		<div class="heading">
+			<div class="container">
+				<div class="row d-flex justify-content-center text-center">
+					<div class="col-lg-8">
+						<h1>Examens</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Page Title -->
+	<!-- Button to toggle calendar -->
+	<button id="toggleCalendarBtn" style="margin-left:95%; margin-top:5%" class="btn btn-primary mb-3">
+		<i class="fa fa-calendar" aria-hidden="true"></i>
+	</button>
+
+	<!-- Courses List Section -->
+	<section id="courses-list" class="section courses-list">
+		<div class="container">
+			<div class="row">
+				{% for key, exam in exams %}
+					{% set description = descriptions[key] %}
+					{% set image = images[key] %}
+					<div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+						<div class="course-item">
+							<img src="{{image}}" class="img-fluid" alt="...">
+							<div class="course-content">
+								<div class="d-flex justify-content-between align-items-center mb-3">
+									<p class="category">{{ exam.module }}</p>
+								</div>
+								<h3>{{ exam.date|date("Y-m-d ") }}</h3>
+								<p class="description">{{ description }}</p>
+								<div class="trainer d-flex justify-content-between align-items-center">
+									<div class="trainer-profile d-flex align-items-center">
+										{% set currentDate = "now"|date("Y-m-d") %}
+										{% if currentDate |date("Y-m-d") > exam.date |date("Y-m-d") %}
+											<a>Expired</a>
+										{% elseif currentDate | date("Y-m-d") == exam.date | date("Y-m-d") %}
+											<a href="{{ path('app_exams_showtest', {'id': exam.id}) }}" class="trainer-link">Passer l'examen</a>
+										{% else %}
+											<a>Bientôt</a>
+										{% endif %}
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Course Item-->
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- /Courses List Section -->
+
+	<!-- Calendar Section (Initially Hidden) -->
+	<section id="calendar" class="section calendar">
+		{% block calendar %}{% endblock %}
+	</section>
+
+	<script>
+		// JavaScript to toggle visibility of the calendar section
+document.getElementById("toggleCalendarBtn").addEventListener("click", function () {
+var calendarSection = document.getElementById("calendar");
+if (calendarSection.style.display === "none") {
+calendarSection.style.display = "block";
+} else {
+calendarSection.style.display = "none";
+}
+});
+	</script>
+
+{% endblock %}

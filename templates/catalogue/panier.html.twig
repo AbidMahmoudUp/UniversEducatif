@@ -1,0 +1,73 @@
+{% extends 'baseStudent.html.twig' %}
+
+{% block MainContent %}
+{% block body %}
+<div class="container mt-3">
+    <h2>Votre Panier</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit ID</th> <!-- Adjusted to show product ID -->
+                <th>Prix Unité</th>
+                <th>Quantité</th>
+                <th>Sous-total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if cart|length > 0 %}
+            {% for produitId, item in cart %}
+            <tr>
+                <td>{{ produitId }}</td> <!-- Displaying Product ID -->
+                <td>{{ item.prixInit }} €</td>
+                <td>
+                    <form action="{{ path('decrement_quantityp', {'produitId': produitId}) }}" method="post" style="display: inline-block;">
+                        <button type="submit" class="btn btn-warning">-</button>
+                    </form>
+                    {{ item.qte }}
+                    <form action="{{ path('increment_quantityp', {'produitId': produitId}) }}" method="post" style="display: inline-block;">
+                        <button type="submit" class="btn btn-info">+</button>
+                                            <input type="hidden"  value="{{ produitId }}">
+
+                    </form>
+                </td>
+                <td>{{ (item.prixInit * item.qte) }} €</td>
+                <td>
+                    <form action="{{ path('remove_from_cart', {'produitId': produitId}) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                       
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">Votre panier est vide</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+        <h4>Total: €{{total}} </h4> <!-- Assuming 'total' is passed from the controller -->
+        <form action="{{ path('app_panier_pdf') }}" method="post">
+                   <button class="btn btn-primary">Procéder au paiement</button>
+                       
+                    </form>
+    </div>
+</div>
+
+<script>
+document.getElementById('addToCartForm').onsubmit = function(event) {
+    event.preventDefault();
+    var produitId = document.getElementById('produit_id').value;
+    var quantity = document.getElementById('quantity').value;
+    var prixInit = document.getElementById('prixInit').value;
+    console.log("unitPrice ", prixInit);
+    var actionPath = '{{ path('increment_quantityp', {'produitId': 'ID'}) }}';
+    actionPath = actionPath.replace('ID', produitId).replace('QUANTITY', quantity);
+    this.action = actionPath;
+    this.submit();
+}
+</script>
+{% endblock %}
+{% endblock %}

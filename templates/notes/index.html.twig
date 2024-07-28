@@ -1,0 +1,31 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Notes index{% endblock %}
+
+{% block MainContent %}
+    <h1>Notes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Module</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note.module }}</td>
+                <td>{{ note.note }}</td>
+           
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

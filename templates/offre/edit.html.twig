@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Offre{% endblock %}
+
+{% block MainContent %}
+<link href="{{asset("css/formStyle.css")}}" rel="stylesheet">
+
+    <h1>Edit Offre</h1>
+<div class="container">  
+  {{ form_start(form , {'attr':{'class': 'contact'}}) }}
+    <h3>Quick Contact</h3>
+    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <fieldset>
+      {# <input placeholder="Your name" type="text" tabindex="1" required autofocus> #}
+      {{ form_widget(form.description,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <input placeholder="Your Email Address" type="email" tabindex="2" required> #}
+      {{ form_widget(form.niveau,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <input placeholder="Your Phone Number" type="tel" tabindex="3" required> #}
+      {{ form_widget(form.dateDebut,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required> #}
+    {{ form_widget(form.dateFin,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea> #}
+        {{ form_widget(form.idSociete,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> #}
+        {{ form_widget(form.submit , {'attr':{'class':'contact-submit'}}) }}
+    </fieldset>
+    {{ form_end(form) }}
+  
+ 
+  
+</div>
+    {# {{ include('offre/_form.html.twig', {'button_label': 'Update'}) }} #}
+
+    <a href="{{ path('app_offre_index') }}">back to list</a>
+
+    {{ include('offre/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "baseStudent.html.twig" %}
+
+{% block MainContent %}
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>{{ cour.nom }}</h1>
+                        <p class="mb-0">{{ cour.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current">Course Details</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+  <!-- TTETETETETETET -->
+<div class="col-lg-8 details order-2 order-lg-1">
+    <h3>Titre de la vidéo</h3>
+    <video controls class="img-fluid">
+        <source src="{{ cour.videoPath }}" type="video/mp4">
+        Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+    </video>
+</div>
+
+    <div class="col-lg-8 details order-2 order-lg-1">
+    <h3>Titre de l'audio</h3>
+    <video controls class="img-fluid">
+       <source src="{{cour.audioPath}}" type="audio/mpeg">
+       <source src="{{cour.audioPath}}" type="audio/wav">
+    </video>
+    </div>
+    <div class="col-lg-8 details order-2 order-lg-1">
+    <h3>Titre du PDF</h3>
+    <a href="chemin/vers/le/fichier.pdf" target="_blank">Télécharger le PDF</a>
+     </div>
+ 
+
+
+
+</main>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliotheque index{% endblock %}
+
+{% block MainContent %}
+    <h1>Bibliotheque index</h1>
+
+
+    <input type="text" name="text" id="search-input" placeholder="Search " class="input">
+    {# Ajouter le formulaire de tri #}
+<form id="sort-form" method="GET">
+    <select name="sort">
+        <option value="id_asc">Id (ascendant)</option>
+        <option value="id_desc">Id (descendant)</option>
+        <option value="nom_asc">Nom (ascendant)</option>
+        <option value="nom_desc">Nom (descendant)</option>
+        <option value="nbrLivre_asc">NbrLivre (ascendant)</option>
+        <option value="nbrLivre_desc">NbrLivre (descendant)</option>
+    </select>
+    <button type="submit">Trier</button>
+</form>
+   
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>NbrLivre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bibliotheque in bibliotheques %}
+                <tr class="bibliotheque-row">
+                    <td>{{ bibliotheque.id }}</td>
+                    <td class="nom">{{ bibliotheque.nom }}</td>
+                    <td>{{ bibliotheque.mail }}</td>
+                    <td>{{ bibliotheque.nbrLivre }}</td>
+                    <td>
+                        <a href="{{ path('app_bibliotheque_show', {'id': bibliotheque.id}) }}">show</a>
+                        <a href="{{ path('app_bibliotheque_edit', {'id': bibliotheque.id}) }}">edit</a>
+                        <a href="{{ path('app_excel') }}" class="btn btn-primary">Excel</a>
+                         <a href="{{ path('bibliotheque_statistics') }}" class="btn btn-primary">Statistics</a>
+
+
+
+                      
+                    </td>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bibliotheque_new') }}">Create new</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search-input').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                $('.bibliotheque-row').each(function() {
+                    const nom = $(this).find('.nom').text().toLowerCase();
+                    if (nom.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

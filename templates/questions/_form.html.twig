@@ -1,0 +1,62 @@
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="form-container">
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.question) }}
+        {{ form_widget(form.question, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.choix1) }}
+        {{ form_widget(form.choix1, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.choix2) }}
+        {{ form_widget(form.choix2, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.choix3) }}
+        {{ form_widget(form.choix3, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.choixcorrect) }}
+        {{ form_widget(form.choixcorrect, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.duree) }}
+        {{ form_widget(form.duree, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>

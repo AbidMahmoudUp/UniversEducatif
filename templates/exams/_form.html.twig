@@ -1,0 +1,42 @@
+<style>
+    /* Form container */
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form fields */
+    .form-field {
+        margin-bottom: 20px;
+    }
+
+    /* Button */
+    .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="form-container">
+    {{ form_start(form) }}
+        <div class="form-field">
+            {{ form_label(form.date) }}
+            {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.date) }}
+        </div>
+      
+        <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+</div>

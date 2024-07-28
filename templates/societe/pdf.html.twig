@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{{title}}</title>
+</head>
+<body>
+    <center><h1>Les Offres</h1></center>
+    <div style="margin: 0 auto;display: block;width: 500px;">
+        <table width="100%" border="1">
+            <tr>
+                <td colspan="5">
+                <center><h3>{{ nomSociete }}</h3></center>
+                </td>
+            </tr>
+            {% for offre in offres %}
+            <tr>
+                            <th> IdOffre </th>
+                            <th> Description </th>
+                            <th> Niveau </th>
+                            <th> Date Debut</th>
+                            <th> Date Fin</th>
+            </tr>
+            <tr>
+                <td><center>{{offre.id}}</center></td>
+          
+                <td><center>{{offre.description}}</center></td>
+           
+                <td><center>{{offre.niveau}}</center></td>
+           
+                <td><center>{{ offre.dateDebut ? offre.dateDebut|date('Y-m-d') : '' }}</center></td>
+           
+                <td><center>{{ offre.dateFin ? offre.dateFin|date('Y-m-d') : '' }}</center></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

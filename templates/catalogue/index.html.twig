@@ -1,0 +1,68 @@
+{% extends 'baseStudent.html.twig' %}
+
+{% block MainContent %}
+{% block body %}
+
+<style>
+    .container {
+        max-width: 1200px; /* Définissez la largeur maximale de la zone conteneur */
+        margin: auto; /* Centre le conteneur horizontalement */
+    }
+    .card {
+        margin: 20px; /* Espacement entre les cartes */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre portée pour un effet de profondeur */
+        width: 300px; /* Largeur fixe pour chaque carte */
+    }
+    .card-body {
+        padding: 20px; /* Espacement à l'intérieur de chaque carte */
+    }
+    .form-control, .btn {
+        margin-top: 10px; /* Espacement vertical pour les éléments du formulaire */
+    }
+</style>
+
+<div class="container">
+<div class="row">
+    {% for produit in produits %}
+<div class="card">
+                
+<img src="/uploads/images/{{ produit.image }}" alt="{{ produit.nom }}" class="img-fluid" style="max-width: 155px;">    <div class="card-body">
+        <h5 class="card-title">{{ produit.nom }}</h5>
+        <p class="card-text">Prix: {{ produit.prixInit }}€</p>
+        <form id="addToCartForm{{ produit.id }}" method="post">
+            <input type="hidden" id="prixInit{{ produit.id }}" value="{{ produit.prixInit }}">
+            <input type="hidden" id="produit_id{{ produit.id }}" value="{{ produit.id }}">
+            <input type="number" id="quantity{{ produit.id }}" value="1" min="1" class="form-control">
+            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+</div>
+</div>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Attach a submit event listener to each form
+    {% for produit in produits %}
+    document.getElementById('addToCartForm{{ produit.id }}').onsubmit = function(event) {
+        event.preventDefault();
+        var formId = this.id.replace('addToCartForm', '');
+        var produitId = document.getElementById('produit_id' + formId).value;
+        var quantity = document.getElementById('quantity' + formId).value;
+        var prixInit = document.getElementById('prixInit' + formId).value;
+
+
+        console.log( "Produit ID: ", produitId, "Quantité: ", quantity, "Prix Initial: ", prixInit);
+        var actionPath = '{{ path('addToCart', { 'produitId': 'ID', 'quantity': 'QUANTITY', 'prixInit': 'UP'}) }}';
+        actionPath = actionPath.replace('ID', produitId).replace('QUANTITY', quantity).replace('UP', prixInit);
+        this.action = actionPath;
+        this.submit();
+    };
+    {% endfor %}
+});
+</script>
+
+
+{% endblock %}
+{% endblock %}

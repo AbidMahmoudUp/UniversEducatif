@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossier index{% endblock %}
+
+
+
+{% block MainContent %}
+
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}"></style>
+    <h1>Dossier index</h1> 
+    <div class="input-group mb-3">
+      <style>
+        .validator-message {
+            color: red;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+    </style>
+  <input type="text" id="myInput" class="form-control" oninput="searchFun()" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  <span class="input-group-text" id="inputGroup-sizing-default">Chercher</span>
+</div>
+        <form name="ordreSociete" method="POST">
+            <select id="ordre" name="ordre">
+            <option value="">Tout</option>
+            <option value="Accepté">Accepté</option>
+            <option value="Refusé">Refusé</option>
+            <option value="En Attente">En Attente</option>
+            </select>
+        </form>
+    <table class="table table-striped" id="myTable">
+        <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Description d'offre</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dossier in dossiers %}
+            <tr>
+                <td><a href="{{ path('app_admin_userDetails', {'id': dossier.idUser.getId()}) }}">{{dossier.idUser.getUserName()}} </a></td>
+                <td>{{dossier.idOffre.getDescription()}}</td>
+                <td><p class="{% if dossier.status == 'Accepté' %} status delivered {% endif %} {% if dossier.status == 'Refusé' %} status cancelled {% endif %} {% if dossier.status == 'En Attente' %} status pending {% endif %}  ">{{ dossier.status }}</p></td>
+                <td>
+                    <a href="{{ path('app_dossier_show', {'idUser': dossier.idUser.getId(), 'idOffre' : dossier.idOffre.getId()}) }}">show</a>
+                    <a href="{{ path('app_dossier_edit', {'idUser': dossier.idUser.getId(), 'idOffre' : dossier.idOffre.getId()}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+   <script language = "javascript" 
+      src = "https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+   
+   <script language = "javascript">  
+      $(document).ready(function(){   
+         $("#ordre").change(function(event){ 
+            const obj = {ordre : document.ordreSociete.ordre.value};
+            $.ajax({  
+               url: "{{path('app_dossier_filtre')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                if(data.length == 0)
+                {
+                    alert("No Data found");
+                } 
+                else
+                {
+                    var table,tr,td,i,j;
+                        table = document.getElementById("myTable");
+                        tr = table.getElementsByTagName("tr");
+                        const index = ["idUser", "idOffre", "status","actions"];
+                        for (i = 1; i < data.length + 1; i++) {
+                            for (j = 0; j < tr[i].cells.length; j++) {
+                                if(data[i - 1][index[j]] == "En Attente")
+                                {
+                                    tr[i].cells[j].innerHTML = "<p class='status pending'>"+data[i - 1][index[j]]+"</p>"; 
+                                }
+                                else if(data[i - 1][index[j]] == "Accepté")
+                                {
+                                    tr[i].cells[j].innerHTML = "<p class='status delivered'>"+data[i - 1][index[j]]+"</p>"; 
+                                }
+                                else if(data[i - 1][index[j]] == "Refusé")
+                                {
+                                    tr[i].cells[j].innerHTML = "<p class='status cancelled'>"+data[i - 1][index[j]]+"</p>";    
+                                }
+                                else
+                                {
+                                    tr[i].cells[j].innerHTML = data[i - 1][index[j]]; 
+                                }
+                                   
+                                
+                                
+                                
+                            }
+
+                            tr[i].style.display= "";
+                        }
+
+                        for(i = i; i < tr.length; i++)
+                        {
+                            tr[i].style.display= "none";
+                        }
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+   
+      });  
+   </script> 
+
+
+        <script>
+	function searchFun() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        // loop through all the td elements of the current row
+        for (j = 0; j < tr[i].cells.length; j++) {
+            td = tr[i].cells[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break; // exit the loop if a match is found
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+}
+</script>
+{% endblock %}

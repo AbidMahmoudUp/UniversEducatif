@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modules {% endblock %}
+
+{% block MainContent %}
+    <h1>Modules</h1>
+
+    <label for="searchInput">Rechercher  :</label>
+    <input type="text" id="searchInput" placeholder="Rechercher...">
+    <br><br>
+    <div>
+        <label for="sortBy">Trier par :</label>
+        <select id="sortBy">
+            <option value="nom">Nom</option>
+            <option value="tempsT">Temps T</option>
+        </select>
+        <label for="sortDirection">Direction du tri :</label>
+        <input type="radio" id="sortAsc" name="sortDirection" value="asc" checked>
+        <label for="sortAsc">Ascendant</label>
+        <input type="radio" id="sortDesc" name="sortDirection" value="desc">
+        <label for="sortDesc">Descendant</label>
+        <button id="sortButton" style="width: 200px">Trier</button>
+    </div>
+    <br><br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Temps T</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="moduleTableBody">
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.nom }}</td>
+                <td>{{ module.description }}</td>
+                <td>
+                
+                    {% if module.imgPath %}
+                        <img src="{{ module.imgPath }}" alt="Image du module" width="150" height="150">
+                    {% else %}
+                        <p>Pas d'image disponible</p>
+                    {% endif %}
+                </td>
+                <td>{{ module.tempsT }}</td>
+                <td>
+                    <a href="{{ path('app_modules_show', {'id': module.id}) }}">show</a>
+                    <a href="{{ path('app_modules_edit', {'id': module.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_modules_new') }}">Créer nouveau</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#searchInput').on('input', searchModules);
+
+            $('#sortBy').on('change', function(){
+                var sortBy = $(this).val();
+                var sortDirection = $('input[name="sortDirection"]:checked').val();
+                sortModules(sortBy, sortDirection);
+            });
+
+            $('#sortButton').on('click', function(){
+                var sortBy = $('#sortBy').val();
+                var sortDirection = $('input[name="sortDirection"]:checked').val();
+                sortModules(sortBy, sortDirection);
+            });
+
+            function searchModules() {
+                var query = $('#searchInput').val();
+                $.ajax({
+                    url: '/modules/search',
+                    type: 'GET',
+                    data: { input: query },
+                    success: function(response) {
+                        updateModulesTable(response);
+                    }
+                });
+            }
+
+            function sortModules(sortBy, sortDirection) {
+                $.ajax({
+                    url: '/modules/sort/' + sortBy + '/' + sortDirection,
+                    type: 'GET',
+                    success: function(response) {
+                        updateModulesTable(response);
+                    }
+                });
+            }
+
+            function updateModulesTable(modules) {
+                var tableBody = $('#moduleTableBody');
+                tableBody.empty();
+
+                $.each(modules, function(index, module){
+                    var imagePath = module.imgPath.replace('C:\\xampp\\htdocs\\img', 'http://127.0.0.1/img/');
+                    var row = $('<tr>');
+                    row.append($('<td>').text(module.nom));
+                    row.append($('<td>').text(module.description));
+                    if (imagePath) {
+                        row.append($('<td>').append($('<img>').attr('src', imagePath).attr('alt', 'Image du module').attr('width', '150').attr('height', '150')));
+                    } else {
+                        row.append($('<td>').text('Pas d\'image disponible'));
+                    }
+                    row.append($('<td>').text(module.tempsT));
+                    row.append($('<td>').append($('<a>').attr('href', '/modules/' + module.id).text('show')));
+                    row.append($('<td>').append($('<a>').attr('href', '/modules/' + module.id + '/edit').text('edit')));
+
+                    tableBody.append(row);
+                });
+            }
+        });
+    </script>
+{% endblock %}

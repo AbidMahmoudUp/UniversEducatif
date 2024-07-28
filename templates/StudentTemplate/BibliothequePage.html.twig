@@ -1,0 +1,78 @@
+   {% extends "baseStudent.html.twig" %}
+
+{% block MainContent %}
+<main class="main">
+
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1>Bibliotheques</h1>
+            <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li class="current">bibliotheque</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <!-- Courses List Section -->
+  <section id="courses-list" class="section courses-list">
+
+    <div class="container">
+
+      <div class="row">
+        {% for bibliotheque in bibliotheques %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-5" data-aos="zoom-in" data-aos-delay="100">
+          <div class="course-item">
+          
+       
+            <div class="course-content">
+            
+                  <img src="{{asset("/img/biblio.png")}}" class="img-fluid" alt="" width="150" height="150">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="category">{{ bibliotheque.nom }}</p>
+              </div>
+
+              <form action="{{ path('app_livreFront_index', {'id': bibliotheque.id}) }}" method="POST">
+                <button type="submit" class="btn" style="display: none;"></button>
+              </form>
+
+              <p class="description">{{bibliotheque.mail}}</p>
+             
+            </div>
+          </div>
+        </div> <!-- End Course Item-->
+        {% endfor %}
+      </div>
+
+    </div>
+
+  </section><!-- /Courses List Section -->
+
+</main>
+
+<script>
+  // Récupérer toutes les cartes de cours
+  var courseCards = document.querySelectorAll('.course-item');
+
+  // Pour chaque carte de cours, ajouter un gestionnaire d'événements au clic
+  courseCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      // Trouver le formulaire dans cette carte et le soumettre
+      var form = card.querySelector('form');
+      form.submit();
+    });
+  });
+</script>
+
+{% endblock %}

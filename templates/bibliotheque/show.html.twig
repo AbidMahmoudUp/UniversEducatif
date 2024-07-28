@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliotheque{% endblock %}
+
+{% block MainContent %}
+    <h1>Bibliotheque</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bibliotheque.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ bibliotheque.nom }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ bibliotheque.mail }}</td>
+            </tr>
+            <tr>
+                <th>NbrLivre</th>
+                <td>{{ bibliotheque.nbrLivre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bibliotheque_index') }}">back to list</a>
+
+    <a href="{{ path('app_bibliotheque_edit', {'id': bibliotheque.id}) }}">edit</a>
+
+    {{ include('bibliotheque/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Societe{% endblock %}
+
+{% block MainContent %}
+    <h1>Edit Societe</h1>
+    <link href="{{asset("css/formStyle.css")}}" rel="stylesheet">
+
+<div class="container">  
+  {{ form_start(form , {'attr':{'class': 'contact'}}) }}
+    <h3>Quick Contact</h3>
+    <h4>Contact us today, and get reply with in 24 hours!</h4>
+    <fieldset>
+      {# <input placeholder="Your name" type="text" tabindex="1" required autofocus> #}
+      {{ form_widget(form.nomSociete,{'attr':{'class':'inputText'}}) }}
+
+    </fieldset>
+    <fieldset>
+      {# <input placeholder="Your Email Address" type="email" tabindex="2" required> #}
+      {{ form_widget(form.description,{'attr':{'class':'inputText'}}) }}
+
+       <fieldset>
+      {# <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> #}
+        {{ form_widget(form.submit , {'attr':{'class':'contact-submit'}}) }}
+    </fieldset>
+    {{ form_end(form) }}
+  
+ 
+  
+</div>
+    {# {{ include('societe/_form.html.twig', {'button_label': 'Update'}) }} #}
+
+    <a href="{{ path('app_societe') }}">back to list</a>
+
+    {{ include('societe/_delete_form.html.twig') }}
+{% endblock %}

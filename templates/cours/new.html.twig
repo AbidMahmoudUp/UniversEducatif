@@ -1,0 +1,12 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}New Cours{% endblock %}
+
+{%block MainContent %}
+
+    <h1>Create new Cours</h1>
+
+    {{ include('cours/_form.html.twig') }}
+
+    <a href="{{ path('app_cours_index') }}">back to list</a>
+{% endblock %}

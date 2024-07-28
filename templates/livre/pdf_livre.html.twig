@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ livre.titre }}</title>
+    <style>
+        /* Styles CSS personnalisés */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative; /* Ajout de la position relative */
+        }
+        .title-box {
+            border: 2px solid #800000; /* Bordure rouge bordeaux */
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            color: #800000; /* Couleur de la bordure pour le texte du titre */
+        }
+        .title-label {
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            background-color: #fff;
+            padding: 0 5px;
+            font-size: 14px;
+            color: #800000;
+        }
+        .univers-educatif { /* Style pour "Univers Educatif" */
+            position: absolute;
+            top: -40px; /* Ajustement pour le positionnement au-dessus de la bordure */
+            right: 10px; /* Ajustement pour le positionnement à droite */
+            font-size: 18px;
+            color: #006400; /* Couleur verte foncée */
+        }
+        h1 {
+            color: inherit; /* Couleur héritée de la bordure */
+            font-size: 28px;
+            margin: 0;
+            text-align: center;
+        }
+        .details {
+            margin-top: 30px;
+        }
+        .details h2 {
+            color: #006400; /* Vert foncé */
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .details p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .details strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-box">
+            <div class="title-label">TITRE</div> <!-- Ajout du label -->
+            <h1>{{ livre.titre }}</h1>
+            <div class="univers-educatif">Univers Educatif</div> <!-- Ajout de "Univers Educatif" au-dessus de la bordure et à droite -->
+        </div>
+        <div class="details">
+            <h2>Détails du livre</h2>
+            <p><strong>Type:</strong> {{ livre.type }}</p>
+            <p><strong>Auteur:</strong> {{ livre.auteur }}</p>
+            <p><strong>Langue:</strong> {{ livre.langue }}</p>
+        </div>
+    </div>
+</body>
+</html>

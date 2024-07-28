@@ -1,0 +1,26 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}Exams{% endblock %}
+
+{% block MainContent %}
+    <h1>Exams</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ exam.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ exam.date ? exam.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Module</th>
+                <td>{{ exam.module }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exams_index') }}">back to list</a>
+{% endblock %}

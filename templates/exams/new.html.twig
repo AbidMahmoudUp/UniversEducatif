@@ -1,0 +1,24 @@
+{% extends 'baseCoach.html.twig' %}
+
+{% block title %}New Exams{% endblock %}
+
+{% block MainContent %}
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}"></style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Create New Exams</h2>
+                    </div>
+                    <div class="card-body">
+                        {{ include('exams/_form.html.twig') }}
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a href="{{ path('app_exam_index') }}" class="btn btn-primary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

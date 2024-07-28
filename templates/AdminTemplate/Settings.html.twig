@@ -1,0 +1,736 @@
+{% extends "base.html.twig" %}
+
+{% block MainContent %}
+    
+    <head>
+    <style>
+        .validator-message {
+            color: red;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+    </style>
+
+    </head>
+    {% if profile.firstName == null or
+      profile.lastName == null or
+      profile.phoneNumber == null or
+      profile.address == null or
+      profile.location == null %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+    <div class="container">
+
+
+                <div class="row gutters-sm">
+                    <div class="col-md-4 d-none d-md-block">
+                        <div class="card my-5">
+                            <div class="card-body">
+                                <nav class="nav flex-column nav-pills nav-gap-y-1">
+                                    <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>Profile Information
+                                    </a>
+                                    <a href="#account" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings mr-2">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                        </svg>Account Settings
+                                    </a>
+                                    <a href="#security" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield mr-2">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        </svg>Security
+                                    </a>
+                                    <a href="#notification" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell mr-2">
+                                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                        </svg>Notification
+                                    </a>
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card my-5">
+                            <div class="card-header border-bottom mb-3 d-flex d-md-none">
+                                <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
+                                    <li class="nav-item">
+                                        <a href="#profile" data-toggle="tab" class="nav-link has-icon active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#account" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                            </svg></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#security" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                            </svg></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#notification" data-toggle="tab" class="nav-link has-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+                                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                            </svg></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="card-body tab-content ">
+                                <div class="tab-pane active" id="profile">
+                                    <h6>YOUR PROFILE INFORMATION</h6>
+                                    <hr>
+                                                               <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_start(form) }}
+                                    <label for="fullName">first Name</label>
+                                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Enter your firstname' , 'value': '' }})
+                                    }}
+                                    
+                                    <div class="validator-message" id='errorFirstnameSettings'>
+                                        {{ form_errors(form.firstName)}}
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="fullName">last Name</label>
+
+                                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Enter your lastname'}})
+                                        }}
+                                        <div class="validator-message" id='errorLastNameSettings'>
+                                            {{ form_errors(form.lastName)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here
+                                    where you are mentioned. You can change or remove it at any time.</small>
+
+                            
+                                </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fullName">Phone Number</label>
+                                                   {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Enter your phone number'}}) }}
+                                                    <div class="validator-message" id='errorPhoneNumberSettings'>
+                                                    {{ form_errors(form.phoneNumber)}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="url">Email</label>
+                                                   {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email'}}) }}
+                                                   <div class="validator-message" id='errorEmailSettings'>
+                                                    {{ form_errors(form.email)}}
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fullName">Responsibility</label>
+                                                   {{ form_widget(form.responsabilty, {'attr': {'class': 'form-control', 'placeholder': 'Enter your responsibility'}}) }}
+                                                    <div class="validator-message" id='errorResponsibilitySettings'>
+                                                    {{ form_errors(form.responsabilty)}}
+                                                   </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="url">Address</label>
+                                                   {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Enter your address'}}) }}
+                                                   <div class="validator-message" id='errorAddressSettings'>
+                                                    {{ form_errors(form.address)}}
+                                                   </div>
+                                                </div>
+                                            </div>
+                                        </div><div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fullName">Work</label>
+                                                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Enter your title'}}) }}
+                                                    <div class="validator-message" id='errorWorkSettings'>
+                                                    {{ form_errors(form.title)}}
+                                                   </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="url">Country</label>
+                                                    {{ form_widget(form.location, {'attr': {'class': 'form-control', 'placeholder': 'Enter your location'}}) }}
+                                                  <div class="validator-message" id='errorLocationSettings'>
+                                                    {{ form_errors(form.location)}}
+                                                   </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group small text-muted">
+                                            All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
+                                        </div>
+                                       {{ form_widget(form.edit, {'attr': {'class': 'btn btn-primary'}}) }}
+                                        <button type="reset" class="btn btn-light">Reset Changes</button>
+                                        {{ form_end(form) }}
+                                </div>
+                                <script>
+                                    document.settings.settings_firstName.value = '{{profile.firstName}}';
+                                    document.settings.settings_lastName.value = '{{profile.lastName}}';
+                                    document.settings.settings_phoneNumber.value = '{{profile.phoneNumber}}';
+                                    document.settings.settings_responsabilty.value = '{{profileAdmin.responsability}}';
+                                    document.settings.settings_address.value = '{{profile.address}}';
+                                    document.settings.settings_location.value = '{{profile.location}}';
+                                    document.settings.settings_email.value = '{{user.email}}';
+                                    document.settings.settings_title.value = '{{profileAdmin.title}}';
+                                    
+                                    </script>
+                                <div class="tab-pane my-5" id="account">
+                                    <h6>ACCOUNT SETTINGS</h6>
+                                    <hr>
+                                    <form method="post">
+                                        <div class="form-group">
+                                            <label class="d-block text-danger">Delete Account</label>
+                                            <p class="text-muted font-size-sm">Once you delete your account, there is no going back. Please be certain.</p>
+                                        </div>
+                                        <a href="{{path('app_user_delete', {'id': user.id})}}"  class="btn btn-danger"name="delete" type="submit">Delete Account</a>
+                                        
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="security">
+                                    <h6>SECURITY SETTINGS</h6>
+                                    <hr>
+                                    {{ form_start(formUpdatePasswordAdmin) }}
+                                        <div class="form-group">
+                                            <label class="d-block">Change Password</label>
+                                            {{ form_widget(formUpdatePasswordAdmin.password, {'attr': {'class': 'form-control', 'placeholder': 'Enter your responsibility'}}) }}
+                                            <div class="validator-message" id='oldPasswordError'>
+                                            
+                                        </div>
+                                            {{ form_widget(formUpdatePasswordAdmin.newPassword, {'attr': {'class': 'form-control', 'placeholder': 'Enter your responsibility'}}) }}
+                                            {{ form_widget(formUpdatePasswordAdmin.confirmePassword, {'attr': {'class': 'form-control', 'placeholder': 'Enter your responsibility'}}) }}
+                                            <div class="validator-message" id='confirmPasswordError'>
+                                            
+                                        </div>
+                                           
+                                            {{ form_widget(formUpdatePasswordAdmin.edit, {'attr': {'class': 'btn btn-primary'}}) }}
+                                        </div>
+                                    {{ form_end(form) }}
+
+                                </div>
+
+                                <div class="tab-pane" id="notification">
+                                    <h6>NOTIFICATION SETTINGS</h6>
+                                    <hr>
+                                    <form>
+                                        <div class="form-group">
+                                            <label class="d-block mb-0">Security Alerts</label>
+                                            <div class="small text-muted mb-3">Receive security alert notifications via email</div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                                                <label class="custom-control-label" for="customCheck1">Email each time a vulnerability is found</label>
+                                            </div>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck2" checked="">
+                                                <label class="custom-control-label" for="customCheck2">Email a digest summary of vulnerability</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <label class="d-block">SMS Notifications</label>
+                                            <ul class="list-group list-group-sm">
+                                                <li class="list-group-item has-icon">
+                                                    Comments
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Updates From People
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                                        <label class="custom-control-label" for="customSwitch2"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Reminders
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch3" checked="">
+                                                        <label class="custom-control-label" for="customSwitch3"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Events
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch4" checked="">
+                                                        <label class="custom-control-label" for="customSwitch4"></label>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item has-icon">
+                                                    Pages You Follow
+                                                    <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                                                        <label class="custom-control-label" for="customSwitch5"></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+            <script type="text/javascript">
+
+            </script>
+
+
+        </div>
+    </div>
+
+           <script src="{{asset("js/ScriptLogin.js")}}"></script>
+   <script language = "javascript" 
+      src = "https://code.jquery.com/jquery-2.2.4.min.js">
+    </script> 
+       <script language = "javascript">  
+      $(document).ready(function(){   
+      //------------EmailStart-----------------------------------------------
+          $("#settings_email").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['email'] == null)
+                 {
+                    document.getElementById('errorEmailSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorEmailSettings').innerHTML = data['email'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+         //------------EmailEnd-----------------------------------------------
+         //------------FirstNameStart-----------------------------------------
+                $("#settings_firstName").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['firstName'] == null)
+                 {
+                    document.getElementById('errorFirstnameSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorFirstnameSettings').innerHTML = data['firstName'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+        //------------FirstNameEnd-----------------------------------------
+          $("#settings_lastName").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+                
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['lastName'] == null)
+                 {
+                    document.getElementById('errorLastNameSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorLastNameSettings').innerHTML = data['lastName'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+          $("#settings_phoneNumber").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['phoneNumber'] == null)
+                 {
+                    document.getElementById('errorPhoneNumberSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorPhoneNumberSettings').innerHTML = data['phoneNumber'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+                 $("#settings_responsabilty").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+                            
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['responsability'] == null)
+                 {
+                    document.getElementById('errorResponsibilitySettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorResponsibilitySettings').innerHTML = data['responsability'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+        $("#settings_address").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['address'] == null)
+                 {
+                    document.getElementById('errorAddressSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorAddressSettings').innerHTML = data['address'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+                 $("#settings_title").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['title'] == null)
+                 {
+                    document.getElementById('errorWorkSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorWorkSettings').innerHTML = data['title'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+                          $("#settings_location").on("keyup", function(event){ 
+            const obj = {
+                firstname :      document.settings.settings_firstName.value,
+                lastname :       document.settings.settings_lastName.value,
+                email :          document.settings.settings_email.value,
+                responsabilty :  document.settings.settings_responsabilty.value,
+                title :          document.settings.settings_title.value,
+                phoneNumber :    document.settings.settings_phoneNumber.value,
+                location :       document.settings.settings_location.value,
+                address :        document.settings.settings_address.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_userSettings_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['location'] == null)
+                 {
+                    document.getElementById('errorLocationSettings').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorLocationSettings').innerHTML = data['location'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+         
+            $("#admin_password_update_password").on("keyup", function(event){ 
+            const obj = {
+                oldPassword :      document.admin_password_update.admin_password_update_password.value,
+                newPassword :       document.admin_password_update.admin_password_update_newPassword.value,
+                confirmPassword: document.admin_password_update.admin_password_update_confirmePassword.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_Admin_Password_update')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['passwordError'] == null)
+                 {
+                    document.getElementById('oldPasswordError').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('oldPasswordError').innerHTML = data['passwordError'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+         $("#admin_password_update_newPassword").on("keyup", function(event){ 
+            
+            const obj = {
+                oldPassword :       document.admin_password_update.admin_password_update_password.value,
+                newPassword :       document.admin_password_update.admin_password_update_newPassword.value,
+                confirmPassword:    document.admin_password_update.admin_password_update_confirmePassword.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_Admin_Password_update')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['passwordConfirmationError'] == null)
+                 {
+                    document.getElementById('confirmPasswordError').innerHTML = '';
+                 } 
+                 else
+                 {
+                    //alert(data['passwordConfirmationError']);
+                    document.getElementById('confirmPasswordError').innerHTML = data['passwordConfirmationError'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            }); 
+ 
+            
+         
+         });
+              $("#admin_password_update_confirmePassword").on("keyup", function(event){ 
+            
+            const obj = {
+                oldPassword :       document.admin_password_update.admin_password_update_password.value,
+                newPassword :       document.admin_password_update.admin_password_update_newPassword.value,
+                confirmPassword:    document.admin_password_update.admin_password_update_confirmePassword.value
+                };
+
+            $.ajax({  
+               url: "{{path('app_Admin_Password_update')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['passwordConfirmationError'] == null)
+                 {
+                    document.getElementById('confirmPasswordError').innerHTML = '';
+                 } 
+                 else
+                 {
+                    //alert(data['passwordConfirmationError']);
+                    document.getElementById('confirmPasswordError').innerHTML = data['passwordConfirmationError'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            }); 
+ 
+            
+         
+         });
+         
+    $("#settings_edit").on("click", function(event){ 
+        if(
+            document.getElementById('errorFirstnameSettings').innerHTML != "" ||
+            document.getElementById('errorLastnameSettings').innerHTML != "" ||
+            document.getElementById('errorPhoneNumberSettings').innerHTML != "" ||
+            document.getElementById('errorEmailSettings').innerHTML != "" ||
+            document.getElementById('errorResponsibilitySettings').innerHTML != "" ||
+            document.getElementById('errorAddressSettings').innerHTML != "" ||
+            document.getElementById('errorWorkSettings').innerHTML != "" ||
+            document.getElementById('errorLocationSettings').innerHTML != "" ||
+            document.getElementById('oldPasswordError').innerHTML != "" ||
+            document.getElementById('confirmPasswordError').innerHTML != ""
+              )
+        {
+            event.preventDefault();
+        }  
+    });
+      });  
+   </script>
+{% endblock %}

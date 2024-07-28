@@ -1,0 +1,3 @@
+{% for user in users %}
+ID:{{user.id}}|firstName:{{user.profile.getFirstName()}}|lastName:{{user.profile.getLastName()}}|email:{{user.email}};
+{% endfor %}

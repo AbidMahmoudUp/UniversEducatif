@@ -1,0 +1,6 @@
+
+{% for offre in offres %}
+idOffre:{{offre.id}}|description:{{offre.description}}|niveau:{{offre.niveau}}|dateDeb:{{ offre.dateDebut ? offre.dateDebut|date('Y-m-d')}}|dateFin:{{ offre.dateFin ? offre.dateFin|date('Y-m-d')}};
+{% else %}
+NOT FOUND
+{% endfor %}

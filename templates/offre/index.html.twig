@@ -1,0 +1,620 @@
+{% extends "base.html.twig" %}
+
+{%block MainContent %}
+{# <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">    #}
+{# <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  #}
+{# <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style> #}
+
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}">
+
+ <style>
+        .validator-message {
+            color: red;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+    </style>
+{# <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> #}
+<div class="content ">
+
+    <div class="d-flex align-items-center justify-content-between mb-3 ">
+
+        <button class="btn btn-primary rounded-circle" id="open-popup-Admin" type="button" style="
+						font-size: 1rem;
+						padding: 3px !important;
+						width: 33px;
+						height: 33px;
+						border-radius: 50%;
+            position: absolute;
+            top: 12.5%;
+            right: 4%;
+						">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <div id="popup-container-Admin" class="" style="width: 28%;">
+            <button id="close-popup-Admin"><i class="fas fa-times"></i></button>
+            <div id="popup-content-Admin" class="">
+
+                <h4 class="model-titel">Add a new admin </h4>
+                
+                    {{form_start(formOffre)}}
+                    <label for="name">Description:</label>
+                    {# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                    {{form_widget(formOffre.description , {'attr':{'class':'name'}})}}
+                    <div class="validator-message" id='error1'>
+                    </div>
+                    <label for="name">Niveau:</label>
+                    {# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                    {{form_widget(formOffre.niveau , {'attr':{'class':'lastname'}})}}
+                    <div class="validator-message" id='error2'>
+                    </div>
+                    <label for="email">Date Debut:</label>
+                    <div class="input-group-prepend">
+                    </div>
+                    {# <input type="email" placeholder="" id="email" name="email" required> #}
+                    {{form_widget(formOffre.dateDebut , {'attr':{'class':'email'}})}}
+                    <div class="validator-message" id='error3'>
+                    </div>
+
+                    <label for="password">Date Fin:</label>
+                    {# <input type="password" placeholder="" id="password" name="password" required> #}
+                    {{form_widget(formOffre.dateFin , {'attr':{'class':'password'}})}}
+                    <div class="validator-message" id='error4'>
+                    </div>
+                    <label for="phone">Societe:</label>
+                    {# <input type="text" placeholder="" id="phoneNumber" name="phone" required> #}
+                    {{form_widget(formOffre.idSociete , {'attr':{'class':'phoneNumber'}})}}
+                    
+
+
+                    <div class="d-flex align-items-center justify-content-between mb-3  ">
+                        <button href="#" class="btn btn-secondary btn-block mt-3" name="cancel"
+                            style="border-radius: 5px;">Cancel</button>
+                        {{ form_row(formOffre.submit, {'attr': {'class': 'btn btn-primary btn-block mt-3', 'style': 'border-radius: 5px;'}})
+                        }}
+
+                        {# <button href="#" class="btn btn-primary btn-block mt-3"   name="submit" style="border-radius: 5px;">Add</button> #}
+
+                    </div>
+                    {{form_end(formOffre)}}
+               
+            </div>
+        </div>
+        <div id="popup-overlay-Admin"></div>
+
+        <div id="popup-container-AdminUpdate" class="" style="width: 28%;">
+            <button id="close-popup-AdminUpdate"><i class="fas fa-times"></i></button>
+            <div id="popup-content-AdminUpdate" class="">
+                {# <form name="offreUpdate" method="POST"> #}
+                <h4 class="model-titel">Add a new admin </h4>
+                
+                    {{form_start(formOffreUpdate)}}
+                    {{form_widget(formOffreUpdate.id)}}
+                    <label for="name">Description:</label>
+                    <span class="input-icon-Admin-name" id="name-icon"><i class="fas fa-user"></i></span>
+                    {# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                    {{form_widget(formOffreUpdate.description , {'attr':{'class':'name'}})}}
+                    <div class="validator-message" id='error1U'>
+                    </div>
+                    <label for="name">Niveau:</label>
+                    <span class="input-icon-Admin-name1" id="name-icon1"><i class="fas fa-user"></i></span>
+                    {# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                    {{form_widget(formOffreUpdate.niveau , {'attr':{'class':'lastname'}})}}
+                    <div class="validator-message" id='error2U'>
+                    </div>
+                    <label for="email">Date Debut:</label>
+                    <div class="input-group-prepend">
+                        <span class="input-icon-Admin-email" id="email-icon"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    {# <input type="email" placeholder="" id="email" name="email" required> #}
+                    {{form_widget(formOffreUpdate.dateDebut , {'attr':{'class':'email'}})}}
+                    <div class="validator-message" id='error3U'>
+                    </div>
+
+                    <label for="password">Date Fin:</label>
+                    <span class="input-icon-Admin-password" id="password-icon"><i class="fas fa-lock"></i></span>
+                    {# <input type="password" placeholder="" id="password" name="password" required> #}
+                    {{form_widget(formOffreUpdate.dateFin , {'attr':{'class':'password'}})}}
+                    <div class="validator-message" id='error4U'>
+                    </div>
+
+                    <label for="phone">Societe:</label>
+                    <span class="input-icon-Admin-phoneNumber" id="phoneNumber-icon"><i class="fas fa-phone"></i></span>
+                    {# <input type="text" placeholder="" id="phoneNumber" name="phone" required> #}
+                    {{form_widget(formOffreUpdate.idSociete , {'attr':{'class':'phoneNumber'}})}}
+
+
+                    <div class="d-flex align-items-center justify-content-between mb-3  ">
+                        <button href="#" class="btn btn-secondary btn-block mt-3" name="cancel"
+                            style="border-radius: 5px;">Cancel</button>
+                        {{ form_row(formOffreUpdate.edit, {'attr': {'class': 'btn btn-primary btn-block mt-3', 'style': 'border-radius: 5px;'}})
+                        }}
+
+                        {# <button href="#" class="btn btn-primary btn-block mt-3"   name="submit" style="border-radius: 5px;">Add</button> #}
+
+                    </div>
+                    {{form_end(formOffreUpdate)}}
+              {# </form> #}
+            </div>
+        </div>
+        <div id="popup-overlay-AdminUpdate"></div>
+        <script src="{{asset("js/script-popUp-Offre.js")}}"></script>
+    </div>
+
+    <div class="container-fluid p-0">
+        <main class="table" id="customers_table">
+            <section class="table__header">
+                <h1>Table offre</h1>
+                <div class="input-group">
+                    <input id="inputSearch" type="search" placeholder="Search Data...">
+                    <img src="images/search.png" alt="">
+                </div>
+                <div class="export__file">
+                    <label for="export-file" class="export__file-btn" title="Export File"></label>
+                    <input type="checkbox" id="export-file">
+                    <div class="export__file-options">
+                        <label>Export As &nbsp; &#10140;</label>
+                        <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
+                        <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
+                        <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
+                        <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="table__body">
+                <table id="myTable" style="cursor: pointer;">
+                    <thead>
+                        <tr>
+                            <th> IdOffre <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Description <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Niveau <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date Debut <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date Fin <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Societe <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for offre in offres %}
+                        <tr>
+                            <td>{{ offre.id }}</td>
+                            <td>{{ offre.description }}</td>
+                            <td>{{ offre.niveau }}</td>
+                            <td>{{ offre.dateDebut ? offre.dateDebut|date('Y-m-d') : '' }}</td>
+                            <td>{{ offre.dateFin ? offre.dateFin|date('Y-m-d') : '' }}</td>
+                            <td>{{ offre.idSociete.getNomSociete() }}</td>
+                            <td>
+                                <a href='#' onclick='callEdit({{ offre.id }})'>edit </a>
+                                <a href="{{ path('app_offre_show', {'id': offre.id}) }}">show</a>
+
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </section>
+        </main>
+        <a href="{{ path('app_offre_new') }}">Ajouter</a>
+
+    </div>
+
+    {# <script src="{{asset('js/scriptTable.js')}}"></script>
+    <script>
+
+    const search = document.getElementById('inputSearch'),
+    table_rows = document.querySelectorAll('tbody tr'),
+    table_headings = document.querySelectorAll('thead th');
+
+// 1. Searching for specific data of HTML table
+search.addEventListener('input', searchTable);
+    function searchTable() {
+    
+    table_rows.forEach((row, i) => {
+        let table_data = row.textContent.toLowerCase(),
+            search_data = search.value.toLowerCase();
+
+        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+        row.style.setProperty('--delay', i / 25 + 's');
+    })
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+    });
+}
+    </script> #}
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable();
+        });
+    </script>
+
+    <script language="javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script language="javascript">
+        $(document).ready(function () {
+            var table = document.getElementById("myTable");
+
+        });
+
+        $("#inputSearch").on('keyup', function (event) {
+            const obj = {
+                search: inputSearch.value
+            };
+            $.ajax({
+                url: "{{ path('app_offre_search') }}",
+                type: 'POST',
+                dataType: 'json',
+                data: obj,
+                async: true,
+
+                success: function (data, status) {
+                    var table, tr, td, i, j;
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    const index = ["id", "description", "niveau", "dateDebut", "dateFin",
+                        "societe", "actions"
+                    ];
+                    for (i = 1; i < data.length + 1; i++) {
+                        for (j = 0; j < tr[i].cells.length; j++) {
+                            if (index[j] == "actions") {
+                                tr[i].cells[j].innerHTML = data[i - 1][index[j]];
+                            } else {
+                                tr[i].cells[j].innerText = data[i - 1][index[j]];
+                            }
+                        }
+
+                        tr[i].style.display = "";
+                    }
+
+                    for (i = i; i < tr.length; i++) {
+                        tr[i].style.display = "none";
+                    }
+
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log(xhr);
+                    alert(textStatus + ' Ajax request failed.' + errorThrown + " " + xhr);
+                }
+            });
+        });
+             $("#offre_description").on("keyup", function(event){ 
+            const obj = {niveau : document.offre.offre_niveau.value, 
+            description : document.offre.offre_description.value, 
+            dayDateDeb: document.offre.offre_dateDebut_day.value, 
+            monthDateDeb: document.offre.offre_dateDebut_month.value, 
+            yearDateDeb: document.offre.offre_dateDebut_year.value, 
+            monthDateFin: document.offre.offre_dateFin_month.value,
+            dayDateFin: document.offre.offre_dateFin_day.value,
+            yearDateFin: document.offre.offre_dateFin_year.value,
+            idSociete: document.offre.offre_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['description'] == null)
+                 {
+                    document.getElementById('error1').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error1').innerHTML = data['description'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+          $("#offre_niveau").on("keyup", function(event){ 
+           const obj = {niveau : document.offre.offre_niveau.value, 
+            description : document.offre.offre_description.value, 
+            dayDateDeb: document.offre.offre_dateDebut_day.value, 
+            monthDateDeb: document.offre.offre_dateDebut_month.value, 
+            yearDateDeb: document.offre.offre_dateDebut_year.value, 
+            monthDateFin: document.offre.offre_dateFin_month.value,
+            dayDateFin: document.offre.offre_dateFin_day.value,
+            yearDateFin: document.offre.offre_dateFin_year.value,
+            idSociete: document.offre.offre_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['niveau'] == null)
+                 {
+                    document.getElementById('error2').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error2').innerHTML = data['niveau'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+         $("#offre_dateDebut").on("click", function(event){ 
+           const obj = {niveau : document.offre.offre_niveau.value, 
+            description : document.offre.offre_description.value, 
+            dayDateDeb: document.offre.offre_dateDebut_day.value, 
+            monthDateDeb: document.offre.offre_dateDebut_month.value, 
+            yearDateDeb: document.offre.offre_dateDebut_year.value, 
+            monthDateFin: document.offre.offre_dateFin_month.value,
+            dayDateFin: document.offre.offre_dateFin_day.value,
+            yearDateFin: document.offre.offre_dateFin_year.value,
+            idSociete: document.offre.offre_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['dateDebut'] == null)
+                 {
+                    document.getElementById('error3').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error3').innerHTML = data['dateDebut'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+         $("#offre_dateFin").on("click", function(event){ 
+           const obj = {niveau : document.offre.offre_niveau.value, 
+            description : document.offre.offre_description.value, 
+            dayDateDeb: document.offre.offre_dateDebut_day.value, 
+            monthDateDeb: document.offre.offre_dateDebut_month.value, 
+            yearDateDeb: document.offre.offre_dateDebut_year.value, 
+            monthDateFin: document.offre.offre_dateFin_month.value,
+            dayDateFin: document.offre.offre_dateFin_day.value,
+            yearDateFin: document.offre.offre_dateFin_year.value,
+            idSociete: document.offre.offre_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['dateFin'] == null)
+                 {
+                    document.getElementById('error4').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error4').innerHTML = data['dateFin'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+    $("#offre_submit").on("click", function(event){ 
+        if(document.getElementById('error1').innerHTML != "" ||  document.getElementById('error2').innerHTML != ""||  document.getElementById('error3').innerHTML != ""||  document.getElementById('error4').innerHTML != "")
+        {
+            event.preventDefault();
+        }  
+    });
+
+
+     $("#offre_update_description").on("keyup", function(event){ 
+            const obj = {niveau : document.offre_update.offre_update_niveau.value, 
+            description : document.offre_update.offre_update_description.value, 
+            dayDateDeb: document.offre_update.offre_update_dateDebut_day.value, 
+            monthDateDeb: document.offre_update.offre_update_dateDebut_month.value, 
+            yearDateDeb: document.offre_update.offre_update_dateDebut_year.value, 
+            monthDateFin: document.offre_update.offre_update_dateFin_month.value,
+            dayDateFin: document.offre_update.offre_update_dateFin_day.value,
+            yearDateFin: document.offre_update.offre_update_dateFin_year.value,
+            idSociete: document.offre_update.offre_update_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['description'] == null)
+                 {
+                    document.getElementById('error1U').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error1U').innerHTML = data['description'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+          $("#offre_update_niveau").on("keyup", function(event){ 
+           const obj = {niveau : document.offre_update.offre_update_niveau.value, 
+            description : document.offre_update.offre_update_description.value, 
+            dayDateDeb: document.offre_update.offre_update_dateDebut_day.value, 
+            monthDateDeb: document.offre_update.offre_update_dateDebut_month.value, 
+            yearDateDeb: document.offre_update.offre_update_dateDebut_year.value, 
+            monthDateFin: document.offre_update.offre_update_dateFin_month.value,
+            dayDateFin: document.offre_update.offre_update_dateFin_day.value,
+            yearDateFin: document.offre_update.offre_update_dateFin_year.value,
+            idSociete: document.offre_update.offre_update_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['niveau'] == null)
+                 {
+                    document.getElementById('error2U').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error2U').innerHTML = data['niveau'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+         $("#offre_update_dateDebut").on("click", function(event){ 
+           const obj = {niveau : document.offre_update.offre_update_niveau.value, 
+            description : document.offre_update.offre_update_description.value, 
+            dayDateDeb: document.offre_update.offre_update_dateDebut_day.value, 
+            monthDateDeb: document.offre_update.offre_update_dateDebut_month.value, 
+            yearDateDeb: document.offre_update.offre_update_dateDebut_year.value, 
+            monthDateFin: document.offre_update.offre_update_dateFin_month.value,
+            dayDateFin: document.offre_update.offre_update_dateFin_day.value,
+            yearDateFin: document.offre_update.offre_update_dateFin_year.value,
+            idSociete: document.offre_update.offre_update_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['dateDebut'] == null)
+                 {
+                    document.getElementById('error3U').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error3U').innerHTML = data['dateDebut'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+         $("#offre_update_dateFin").on("click", function(event){ 
+           const obj = {niveau : document.offre_update.offre_update_niveau.value, 
+            description : document.offre_update.offre_update_description.value, 
+            dayDateDeb: document.offre_update.offre_update_dateDebut_day.value, 
+            monthDateDeb: document.offre_update.offre_update_dateDebut_month.value, 
+            yearDateDeb: document.offre_update.offre_update_dateDebut_year.value, 
+            monthDateFin: document.offre_update.offre_update_dateFin_month.value,
+            dayDateFin: document.offre_update.offre_update_dateFin_day.value,
+            yearDateFin: document.offre_update.offre_update_dateFin_year.value,
+            idSociete: document.offre_update.offre_update_idSociete.value};
+            $.ajax({  
+               url: "{{path('app_offre_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['dateFin'] == null)
+                 {
+                    document.getElementById('error4U').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error4U').innerHTML = data['dateFin'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+    $("#offre_update_edit").on("click", function(event){ 
+        if(document.getElementById('error1U').innerHTML != "" ||  document.getElementById('error2U').innerHTML != ""||  document.getElementById('error3U').innerHTML != ""||  document.getElementById('error4U').innerHTML != "")
+        {
+            event.preventDefault();
+        }  
+    });
+
+    
+
+ 
+    </script>
+
+
+</div>
+
+{# <input type="text" class="recherche" name="" id="myInput" placeholder="cherhcer" oninput="searchFun()"> #}
+{# <script>
+	function searchFun() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        // loop through all the td elements of the current row
+        for (j = 0; j < tr[i].cells.length; j++) {
+            td = tr[i].cells[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break; // exit the loop if a match is found
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+}
+</script> #}
+
+{% endblock %}

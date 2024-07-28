@@ -1,0 +1,254 @@
+{% extends "base.html.twig" %}
+
+{%block MainContent %}
+{# <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">    #}
+ {# <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  #}
+{# <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style> #}
+
+<link rel="stylesheet" href="{{asset('css/styleTable.css')}}"></style>
+{# <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> #}
+
+<style>
+        .validator-message {
+            color: red;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+        }
+    </style>
+			<div class="content ">
+			
+							<div class="d-flex align-items-center justify-content-between mb-3 ">
+				
+					<button  class="btn btn-primary rounded-circle" id="open-popup-Admin" type="button" 
+						style="
+						font-size: 1rem;
+						padding: 3px !important;
+						width: 33px;
+						height: 33px;
+						border-radius: 50%;
+            position: absolute;
+            top: 12.5%;
+            right: 4%;
+						"
+					>
+						<i class="fas fa-plus"></i>
+					</button>
+
+					<div id="popup-container-Admin" class="" style="width: 28%;">
+						<button id="close-popup-Admin"><i class="fas fa-times"></i></button>
+						<div id="popup-content-Admin" class="">
+							
+							<h4 class="model-titel">Add a new Societe </h4>
+		
+                {{form_start(formSociete , {'attr': {'novalidate': 'novalidate'}})}}
+								<label for="name">Nom de Societe</label>
+								{# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                {{form_widget(formSociete.nomSociete , {'attr':{'class':'name'}})}}
+                <div class="validator-message" id='error1'>
+                </div>
+						  		<label for="name">Description:</label>
+								{# <input type="text" placeholder="" id="name" class="asass" name="name" required> #}
+                {{form_widget(formSociete.description , {'attr':{'class':'lastname'}})}}
+                <div class="validator-message" id='error2'>
+                </div>
+								{# <input type="email" placeholder="" id="email" name="email" required> #}
+						    
+								<div class="d-flex align-items-center justify-content-between mb-3  ">
+									<button type="reset" href="#" class="btn btn-secondary btn-block mt-3" name="cancel" style="border-radius: 5px;">Cancel</button>
+                 {# {{ form_row(formSociete.submit, {'attr': {'class': 'btn btn-primary btn-block mt-3', 'style': 'border-radius: 5px;'}}) }} #}
+                  <button class="btn btn-primary btn-block mt-3" style="border-radius: 5px;" id="submit">{{ button_label|default('Save') }}</button>
+									{# <button href="#" class="btn btn-primary btn-block mt-3"   name="submit" style="border-radius: 5px;">Add</button> #}
+									
+								  </div>
+                  {{form_end(formSociete)}}
+
+						</div>
+					  </div>
+					  <div id="popup-overlay-Admin"></div>
+					  <script src="{{asset("js/script-popUp-Societe.js")}}"></script>
+				</div>
+				<div class="container-fluid p-0">
+					<main class="table" id="customers_table">
+        <section class="table__header">
+            <h1>Table Societe</h1>
+            <div class="input-group">
+                <input id="inputSearch" type="search" placeholder="Search Data...">
+                <img src="images/search.png" alt="">
+            </div>
+            <div class="export__file">
+                <label for="export-file" class="export__file-btn" title="Export File"></label>
+                <input type="checkbox" id="export-file">
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
+                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
+                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                </div>
+            </div>
+        </section>
+        
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id Societe <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Nom de Societe <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Description <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for societe in societes %}
+                    <tr>
+                        <td>{{ societe.id }}</td>
+                        <td>{{ societe.nomSociete }}</td>
+                        <td>{{ societe.description }}</td>
+                        <td>
+                            <a href="{{ path('app_societe_show', {'id': societe.id}) }}">show</a>
+                            <a href="{{ path('app_societe_edit', {'id': societe.id}) }}" >edit</a><br />
+                            <a href="{{ path('app_societe_pdf', {'id': societe.id}) }}" class="btn btn-info">Telecharger PDF</a>
+                        </td>
+                    </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+   
+     
+     
+	  </div>
+
+    <script src="{{asset('js/scriptTable.js')}}"></script>
+    <script>
+
+    const search = document.getElementById('inputSearch'),
+    table_rows = document.querySelectorAll('tbody tr'),
+    table_headings = document.querySelectorAll('thead th');
+
+// 1. Searching for specific data of HTML table
+search.addEventListener('input', searchTable);
+    function searchTable() {
+    alert("test");
+    table_rows.forEach((row, i) => {
+        let table_data = row.textContent.toLowerCase(),
+            search_data = search.value.toLowerCase();
+
+        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+        row.style.setProperty('--delay', i / 25 + 's');
+    })
+
+    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+    });
+}
+    </script>
+<script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script> 
+					
+			</div>
+
+            {# <input type="text" class="recherche" name="" id="myInput" placeholder="cherhcer" oninput="searchFun()"> #}
+            <script>
+	function searchFun() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 1; i < tr.length; i++) {
+        // loop through all the td elements of the current row
+        for (j = 0; j < tr[i].cells.length; j++) {
+            td = tr[i].cells[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break; // exit the loop if a match is found
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+}
+</script>
+<script language = "javascript" 
+      src = "https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+ <script language = "javascript">  
+      $(document).ready(function(){   
+         $("#societe_nomSociete").on("keyup", function(event){ 
+            const obj = {nom : document.societe.societe_nomSociete.value, description : document.societe.societe_description.value};
+            $.ajax({  
+               url: "{{path('app_societe_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['nomSociete'] == null)
+                 {
+                    document.getElementById('error1').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error1').innerHTML = data['nomSociete'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+          $("#societe_description").on("keyup", function(event){ 
+            const obj = {nom : document.societe.societe_nomSociete.value, description : document.societe.societe_description.value};
+            $.ajax({  
+               url: "{{path('app_societe_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['description'] == null)
+                 {
+                    document.getElementById('error2').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('error2').innerHTML = data['description'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+    $("#submit").on("click", function(event){ 
+        if(document.getElementById('error1').innerHTML != "" ||  document.getElementById('error2').innerHTML != "")
+        {
+            event.preventDefault();
+        }  
+    });
+      });  
+   </script> 
+
+{%endblock %}

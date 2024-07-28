@@ -1,0 +1,366 @@
+{% block body %}
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="{{asset("css/style.css")}}">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+{% block javascripts %} 
+   <script language = "javascript" 
+      src = "https://code.jquery.com/jquery-2.2.4.min.js">
+    </script> 
+   
+   <script language = "javascript">  
+        let verificationCode;
+        let email;
+      $(document).ready(function(){   
+         $("#send-mail").on("click", function(event){ 
+            const obj = {email : document.f.email.value};
+            $.ajax({  
+               url: "{{path('app_user_ajax')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data.length == 0)
+                 {
+                    alert("Email not found");
+                 } 
+                 else
+                 {
+                    verificationCode= data['verificationCode'];
+                    const wrapper = document.querySelector('.wrapper');
+                    wrapper.classList.add('sending');
+                    wrapper.classList.remove('forget');
+                    email = document.f.email.value;
+                    document.modifierMot.email.value = email;
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+          $("#validation").on("click", function(event){ 
+            let inputCode= document.codeVerification.code.value;
+            if(inputCode==verificationCode)
+            {
+                const wrapper = document.querySelector('.wrapper');
+
+                wrapper.classList.add('update-password');
+                wrapper.classList.remove('sending');
+
+            }
+            else{
+
+            }
+
+         });    
+
+    $("#validation").on("click", function(event){ 
+            let inputCode= document.codeVerification.code.value;
+            if(inputCode==verificationCode)
+            {
+                const wrapper = document.querySelector('.wrapper');
+
+                wrapper.classList.add('update-password');
+                wrapper.classList.remove('sending');
+
+            }
+            else{
+
+            }
+
+         });    
+
+        $("#modifier-Pass").on("click", function(event){ 
+            const obj = {email : email, password: document.modifierMot.password.value};
+            if(document.modifierMot.password.value != document.modifierMot.confirmPassword.value)
+            {
+                alert("Check your password");
+            }
+            else
+            {
+                $.ajax({  
+                url: "{{path('app_user_password')}}",  
+                type: 'POST',   
+                dataType: 'json',  
+                data: obj,
+                async: true,  
+               
+               success: function(data, status) {  
+                 if(data.length == 0)
+                 {
+                    alert("Failed");
+                 } 
+                 else
+                 {
+                    const wrapper = document.querySelector('.wrapper');
+                    wrapper.classList.remove('update-password');
+
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }
+
+
+            }); 
+        } 
+         });
+      });
+   </script> 
+{% endblock %}  
+
+    </head>
+    <div class="container">
+        <div class="wrapper">
+            <span class="bg-animated"></span>
+            <span class="bg-animated2"></span>
+            <div class="form-box login">
+                <h2 class="animation" style="--i:0;--j:21; margin-right:15%;">Se Connecter</h2>
+            <a class="animation google-icon" style="--i:0;--j:21;margin: 5% auto 0;border-raduis:20px   ;"href="{{ path("connect_google_start") }}"><i class="bx bxl-google"></i> </a>
+                <form method="post" action="">
+                     {{ form_start(formSignIn,{'attr':{'novalidate':'novalidate'}}) }}
+                    <div class="validator-message">
+                    <p>{{errors}}</p>
+                    </div>
+                    <div class="input-box animation" style="--i:1;--j:22;">
+                        {{ form_widget(formSignIn.email) }}
+                        {{ form_label(formSignIn.email) }}  
+                        {{ form_errors(formSignIn.email)}}
+                        <i class="bx bxs-envelope"></i>
+                    </div>
+                    <div class="input-box animation" style="--i:2;--j:23;">
+                         {{ form_widget(formSignIn.password) }}
+                        {{ form_label(formSignIn.password) }}  
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                        {{ form_row(formSignIn.signIn, {'attr': {'class': 'btn animation', 'style': '--i:3;--j:24;'}}) }}
+                    {# <button type="submit" class="btn animation" style="--i:3;--j:24;">Login</button> #}
+                    <div class="logreg-link animation" style="--i:4;--j:25;">
+                         <p>Vous n'avez pas de compte ? <a href="#" class="register">Registre</a></p>
+                         <p> <a href="#" class="forget">Mot de passe Oublieé ?</a></p>
+                    </div>
+                    {{ form_end(formSignIn) }}
+                 </form>
+            </div>
+            <div class="info-text login">
+                <h2 class="animation" style="--i:0;--j:20;">Bienvenue </h2>
+                <p class="animation" style="--i:1;--j:21;">UniversEducatif est une plateforme innovante d'e-learning qui vise à révolutionner l'apprentissage en ligne.</p>
+            </div>
+            <div class="form-box register">
+                <h2 class="animation" style="--i:17;--j:0;">Register</h2>
+                   {{ form_start(formSignUp, {'attr': {'novalidate': 'novalidate' }}) }}
+
+                    <div class="input-box animation" style="--i:18;--j:1;">
+                        <div class="input-container">
+                            {{ form_widget(formSignUp.userName) }}
+                            {{ form_label(formSignUp.userName) }} 
+                        </div>
+                        <div class="validator-message" id='errorUsernameSignUp'>
+                            {{ form_errors(formSignUp.userName)}}
+                        </div>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box animation" style="--i:19;--j:2;">
+                        {{ form_widget(formSignUp.password) }}
+                        {{ form_label(formSignUp.password) }}    
+                        <div class="validator-message" id='errorPasswordSignUp'>
+                          {{ form_errors(formSignUp.password)}}
+                        </div>
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <div class="input-box animation" style="--i:20;--j:3;">
+                        {{ form_widget(formSignUp.email) }}
+                        {{ form_label(formSignUp.email) }}
+                        <div class="validator-message" id='errorEmailSignUp'>
+                        {{ form_errors(formSignUp.email)}}
+                        </div>
+                        <i class="bx bxs-envelope"></i>
+                    </div>
+                    {{ form_row(formSignUp.signUp, {'attr': {'class': 'btn animation', 'style': '--i:21;--j:4;','id':'signUpBtn'}}) }}
+                    {# <button type="submit" class="btn animation" style="--i:21;--j:4;">Sign Up</button>  #}
+                    
+                    <div class="logreg-link animation" style="--i:22;--j:5;">
+                        <p>Vous Avez Déja un compte?  <a href="#" class="login-link">Se Connecter</a></p>
+                        
+                    </div>
+                    {{ form_end(formSignUp) }}
+            </div>
+            
+            <div class="info-text register">
+                <h2 class="animation" style="--i:17;--j:0;">Registre</h2>
+                <p class="animation" style="--i:18;--j:1">nous accordons une grande importance à nos utilisateurs, c'est pourquoi nous avons mis en place un registre client robuste et sécurisé.</p>
+            </div>
+
+
+            <div class="form-box password" >
+                <h2 class="animation" style="--i:17;--j:0;">Forget Password</h2>
+                <form id="input-Test" name="f" method="post" action="">
+                    <div class="input-box animation" style="--i:18;--j:1;">
+                    <input name="email" id="email" type="Email"required>
+                        <label >Email</label>
+                
+                        <i class='bx bxs-envelope' ></i>
+                    </div>
+                    <button type="button" id="send-mail" class="btn send-link animation" style="--i:19;--j:2;">Envoyeé</button>
+
+                </form>
+                <div class="logreg-link animation" style="--i:20;--j:3;">
+                        <p>Remember your password ?<a href="#" class="login-link1">Login</a></p>
+                </div>
+                   
+            </div>
+
+            <div class="form-box confirme-code" id="first-element">
+                <h2 class="animation" style="--i:17;--j:0;">Validation Code</h2>
+                <form method="post" name="codeVerification" action="">
+                    <div class="input-box animation" style="--i:18;--j:2;">
+                     <input name="code" id="code" type="text"required>
+                        <label >Email</label>
+                
+                        <i class='bx bxs-envelope' ></i>
+                    </div>
+
+                     <button type="button" id="validation" class="btn update-password-link animation" style="--i:19;--j:3;">Valideé</button> 
+                </form>
+
+                <div class="logreg-link animation" style="--i:20;--j:4;">
+                        <p> vous souvenez de votre mot de passe ?<a href="#" class="login-link2 ">se Connecter</a></p>
+                </div>
+            </div>
+
+            <div class="form-box update-password">
+                <h2 class="animation" style="--i:1;--j:0;">Changer Mot de passe</h2>
+                <form name="modifierMot" method="post" action="">
+
+                    <input type="hidden" name="email" /> 
+                    <div class="input-box animation" style="--i:2;--j:3;">
+                        <input name="password" id="password" type="password"required>
+                            <label >Mot de passe</label>
+                            <i class='bx bxs-envelope' ></i>
+                    </div>
+                    <div class="input-box animation" style="--i:2;--j:3;">
+                        <input name="confirmPassword" id="confirmPassword" type="password"required>
+                            <label >Confirmé mot de passe</label>
+                            <i class='bx bxs-envelope' ></i>
+                    </div>
+
+
+                <button type="button" class="btn goBack animation" id="modifier-Pass" style="--i:3;--j:4;">Modifier mot de passe</button>
+                </form>
+
+
+                <div class="logreg-link animation" style="--i:4;--j:5;">
+                        <p>vous souvenez de votre mot de passe ?<a href="#" class="login-link3">Se Connecter</a></p>
+                </div>
+            </div>
+            <div class="info-text forgetBanner">
+                <h2 class="animation" style="--i:17;--j:13;">oublié votre mot de passe ?</h2>
+                <p class="animation" style="--i:18;--j:14">Ne vous inquiétez pas, nous sommes là pour vous aider à récupérer l'accès à votre compte. Pour réinitialiser votre mot de passe</p>
+            </div>
+            
+     
+        </div>
+    </div>
+        <script src="{{asset("js/ScriptLogin.js")}}"></script>
+
+       <script language = "javascript">  
+      $(document).ready(function(){   
+         $("#user_userName").on("keyup", function(event){ 
+            const obj = {userName : document.user.user_userName.value, email : document.user.user_email.value, password : document.user.user_password.value};
+            $.ajax({  
+               url: "{{path('app_user_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['userName'] == null)
+                 {
+                    document.getElementById('errorUsernameSignUp').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorUsernameSignUp').innerHTML = data['userName'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+          $("#user_email").on("keyup", function(event){ 
+            const obj = {userName : document.user.user_userName.value, email : document.user.user_email.value, password : document.user.user_password.value};
+            $.ajax({  
+               url: "{{path('app_user_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['email'] == null)
+                 {
+                    document.getElementById('errorEmailSignUp').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorEmailSignUp').innerHTML = data['email'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+
+           $("#user_password").on("keyup", function(event){ 
+            const obj = {userName : document.user.user_userName.value, email : document.user.user_email.value, password : document.user.user_password.value};
+            $.ajax({  
+               url: "{{path('app_user_controle')}}",  
+               type: 'POST',   
+               dataType: 'json',  
+               data: obj,
+               async: true,  
+               
+               success: function(data, status) {  
+                 if(data['password'] == null)
+                 {
+                    document.getElementById('errorPasswordSignUp').innerHTML = '';
+                 } 
+                 else
+                 {
+                    document.getElementById('errorPasswordSignUp').innerHTML = data['password'];
+                    console.log(data);
+                }
+               },  
+               error : function(xhr, textStatus, errorThrown) {  
+                    console.log(xhr);
+                  alert(textStatus+' Ajax request failed.'+ errorThrown+" "+xhr);  
+               }  
+            });  
+         });
+         
+
+    $("#user_signUp").on("click", function(event){ 
+        if(document.getElementById('errorUsernameSignUp').innerHTML != "" ||  document.getElementById('errorEmailSignUp').innerHTML != "")
+        {
+            event.preventDefault();
+        }  
+    });
+      });  
+   </script>
+
+{% endblock %}
